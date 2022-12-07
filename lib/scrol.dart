@@ -3,109 +3,76 @@ import 'package:flutter/material.dart';
 class PageSelectorExample extends StatefulWidget {
   PageSelectorExample({super.key});
 
-  static const kIcons = <Icon>[
-    Icon(Icons.event),
-    Icon(Icons.home),
-  ];
-
   @override
   State<PageSelectorExample> createState() => _PageSelectorExampleState();
 }
 
 class _PageSelectorExampleState extends State<PageSelectorExample> {
-  int state = 0;
-
+  int curentstep = 0;
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 7,
-      initialIndex: state,
-      child: Builder(
-        builder: (BuildContext context) => Scaffold(
-          backgroundColor: Colors.amber,
-          body: SafeArea(
+    bool hide = false;
+
+    List<Step> step = [
+      Step(
+          state: StepState.complete,
+          title: Text(""),
+          content: Container(
             child: Column(
               children: [
-                TabPageSelector(),
-                IgnorePointer(
-                  child: TabBar(
-                    tabs: [
-                      Tab(
-                        text: "",
-                      ),
-                      Tab(
-                        text: "fjg",
-                      ),
-                      Tab(
-                        text: "jed",
-                      ),
-                      Tab(
-                        text: "",
-                      ),
-                      Tab(
-                        text: "jndd",
-                      ),
-                      Tab(
-                        text: "",
-                      ),
-                      Tab(
-                        text: "",
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: TabBarView(
-                    children: [
-                      Icon(
-                        Icons.account_box_sharp,
-                        color: Colors.red,
-                      ),
-                      Icon(
-                        Icons.add_alarm_sharp,
-                        color: Colors.red,
-                      ),
-                      Icon(
-                        Icons.add_alarm_sharp,
-                        color: Colors.red,
-                      ),
-                      Icon(
-                        Icons.add_alarm_sharp,
-                        color: Colors.red,
-                      ),
-                      Icon(
-                        Icons.add_alarm_sharp,
-                        color: Colors.red,
-                      ),
-                      Icon(
-                        Icons.add_alarm_sharp,
-                        color: Colors.red,
-                      ),
-                      Icon(
-                        Icons.add_alarm_sharp,
-                        color: Colors.red,
-                      ),
-                    ],
-                    physics: NeverScrollableScrollPhysics(),
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    final TabController controller =
-                        DefaultTabController.of(context)!;
-                    if (state <= 6) {
-                      if (!controller.indexIsChanging) {
-                        controller.animateTo(state++);
-                      }
-                    } else {
-                      return;
-                    }
-                  },
-                  child: const Text('SKIP'),
-                ),
+                TextField(
+                    decoration: InputDecoration(border: OutlineInputBorder())),
+                SizedBox(height: 25),
+                TextField(
+                    decoration: InputDecoration(border: OutlineInputBorder())),
+                SizedBox(height: 25),
+                TextField(
+                    decoration: InputDecoration(border: OutlineInputBorder())),
               ],
             ),
           ),
+          isActive: curentstep >= 0),
+      Step(
+          title: Text(""),
+          content: Text("page2"),
+          isActive: curentstep >= 1,
+          state: StepState.editing),
+      Step(title: Text(""), content: Text("page3"), isActive: curentstep >= 2),
+      Step(title: Text(""), content: Text("page2"), isActive: curentstep >= 3),
+    ];
+
+    return Scaffold(
+      body: SafeArea(
+        child: Stepper(
+          controlsBuilder: (BuildContext ctx, ControlsDetails dtl) {
+            return Row(
+              children: <Widget>[
+                SizedBox(height: 100),
+                ElevatedButton(
+                  onPressed: dtl.onStepContinue,
+                  child: Text(hide == true ? '' : 'بعدی'),
+                ),
+                SizedBox(
+                  width: 160,
+                ),
+                ElevatedButton(
+                  onPressed: dtl.onStepCancel,
+                  child: Text(hide == true ? '' : 'قبلی'),
+                ),
+              ],
+            );
+          },
+          type: StepperType.horizontal,
+          steps: step,
+          currentStep: curentstep,
+          onStepCancel: () {},
+          onStepContinue: () {
+            setState(() {
+              if (curentstep <= step.length - 1) {
+                curentstep++;
+              }
+            });
+          },
         ),
       ),
     );
