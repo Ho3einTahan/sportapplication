@@ -10,7 +10,7 @@ void main() {
     MaterialApp(
       theme: ThemeData(fontFamily: "iranyekan"),
       debugShowCheckedModeBanner: false,
-      home: (home()),
+      home: (slider()),
     ),
   );
 }

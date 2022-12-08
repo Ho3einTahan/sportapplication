@@ -1,80 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:introduction_slider/introduction_slider.dart';
+import 'package:sport_application/page1.dart';
 
-class PageSelectorExample extends StatefulWidget {
-  PageSelectorExample({super.key});
+class slider extends StatefulWidget {
+  const slider({super.key});
 
   @override
-  State<PageSelectorExample> createState() => _PageSelectorExampleState();
+  State<slider> createState() => _sliderState();
 }
 
-class _PageSelectorExampleState extends State<PageSelectorExample> {
-  int curentstep = 0;
+class _sliderState extends State<slider> {
   @override
   Widget build(BuildContext context) {
-    bool hide = false;
-
-    List<Step> step = [
-      Step(
-          state: StepState.complete,
-          title: Text(""),
-          content: Container(
-            child: Column(
-              children: [
-                TextField(
-                    decoration: InputDecoration(border: OutlineInputBorder())),
-                SizedBox(height: 25),
-                TextField(
-                    decoration: InputDecoration(border: OutlineInputBorder())),
-                SizedBox(height: 25),
-                TextField(
-                    decoration: InputDecoration(border: OutlineInputBorder())),
-              ],
-            ),
-          ),
-          isActive: curentstep >= 0),
-      Step(
-          title: Text(""),
-          content: Text("page2"),
-          isActive: curentstep >= 1,
-          state: StepState.editing),
-      Step(title: Text(""), content: Text("page3"), isActive: curentstep >= 2),
-      Step(title: Text(""), content: Text("page2"), isActive: curentstep >= 3),
-    ];
-
     return Scaffold(
       body: SafeArea(
-        child: Stepper(
-          controlsBuilder: (BuildContext ctx, ControlsDetails dtl) {
-            return Row(
-              children: <Widget>[
-                SizedBox(height: 100),
-                ElevatedButton(
-                  onPressed: dtl.onStepContinue,
-                  child: Text(hide == true ? '' : 'بعدی'),
-                ),
-                SizedBox(
-                  width: 160,
-                ),
-                ElevatedButton(
-                  onPressed: dtl.onStepCancel,
-                  child: Text(hide == true ? '' : 'قبلی'),
-                ),
-              ],
-            );
-          },
-          type: StepperType.horizontal,
-          steps: step,
-          currentStep: curentstep,
-          onStepCancel: () {},
-          onStepContinue: () {
-            setState(() {
-              if (curentstep <= step.length - 1) {
-                curentstep++;
-              }
-            });
-          },
-        ),
-      ),
+          child: Column(
+        children: [
+          IntroductionSlider(
+            items: [
+              IntroductionSliderItem(
+                backgroundColor: Colors.red,
+                logo: FlutterLogo(),
+                title: Text("Title 1"),
+              ),
+              IntroductionSliderItem(
+                logo: FlutterLogo(),
+                title: Text("Title 2"),
+                backgroundColor: Colors.green,
+              ),
+              IntroductionSliderItem(
+                logo: FlutterLogo(),
+                title: Text("Title 3"),
+                backgroundColor: Colors.blue,
+              ),
+            ],
+            done: Done(
+              child: Icon(Icons.done),
+              home: page1(),
+            ),
+            next: Next(child: Icon(Icons.arrow_forward)),
+            back: Back(child: Icon(Icons.arrow_back)),
+            dotIndicator: DotIndicator(),
+          ),
+        ],
+      )),
     );
   }
 }
