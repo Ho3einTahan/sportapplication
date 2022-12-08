@@ -14,35 +14,31 @@ class _sliderState extends State<slider> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Column(
-        children: [
-          IntroductionSlider(
-            items: [
-              IntroductionSliderItem(
-                backgroundColor: Colors.red,
-                logo: FlutterLogo(),
-                title: Text("Title 1"),
-              ),
-              IntroductionSliderItem(
-                logo: FlutterLogo(),
-                title: Text("Title 2"),
-                backgroundColor: Colors.green,
-              ),
-              IntroductionSliderItem(
-                logo: FlutterLogo(),
-                title: Text("Title 3"),
-                backgroundColor: Colors.blue,
-              ),
-            ],
-            done: Done(
-              child: Icon(Icons.done),
-              home: page1(),
-            ),
-            next: Next(child: Icon(Icons.arrow_forward)),
-            back: Back(child: Icon(Icons.arrow_back)),
-            dotIndicator: DotIndicator(),
+          child: IntroductionSlider(
+        items: [
+          IntroductionSliderItem(
+            backgroundColor: Colors.red,
+            logo: FlutterLogo(),
+            title: Text("Title 1"),
+          ),
+          IntroductionSliderItem(
+            logo: FlutterLogo(),
+            title: Text("Title 2"),
+            backgroundColor: Colors.green,
+          ),
+          IntroductionSliderItem(
+            logo: FlutterLogo(),
+            title: Text("Title 3"),
+            backgroundColor: Colors.blue,
           ),
         ],
+        done: Done(
+          child: Icon(Icons.done),
+          home: page1(),
+        ),
+        next: Next(child: Icon(Icons.arrow_forward)),
+        back: Back(child: Icon(Icons.arrow_back)),
+        dotIndicator: DotIndicator(),
       )),
     );
   }
