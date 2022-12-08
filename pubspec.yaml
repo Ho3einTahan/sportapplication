@@ -32,13 +32,11 @@ dependencies:
   animated_splash_screen: ^1.3.0
   flutter_image_slideshow: ^0.1.4
   contained_tab_bar_view: ^0.8.0
-  
+  introduction_slider: ^2.0.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  fancy_intro_carousel_slider: ^0.0.3
-  introduction_slider: ^2.0.1
 
 dev_dependencies:
   flutter_test:
