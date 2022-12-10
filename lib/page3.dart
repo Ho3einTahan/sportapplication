@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sport_application/contact/divid_page3.dart';
 import 'package:sport_application/page4.dart';
 
 class page3 extends StatefulWidget {
@@ -58,7 +57,6 @@ class _page3State extends State<page3> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                divide3(),
                 SizedBox(height: 20),
                 Text(
                   "از کدام یک مشکلات اسکلتی رنج میبرید؟",

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sport_application/contact/divid_page4.dart';
 import 'package:sport_application/page5.dart';
 
 class page4 extends StatefulWidget {
@@ -22,7 +21,6 @@ class _page4State extends State<page4> {
         body: SafeArea(
           child: Column(
             children: [
-              divide4(),
               SizedBox(height: 30),
               Text(
                 "مهم ترین انگیزه شما چیست ؟",

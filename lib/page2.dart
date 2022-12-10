@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sport_application/contact/divid_page2.dart';
 import 'package:sport_application/page3.dart';
 
 class page2 extends StatefulWidget {
@@ -56,7 +55,6 @@ class _page2State extends State<page2> {
             scrollDirection: Axis.vertical,
             child: Column(
               children: [
-                divide2(),
                 Text(
                   "از کدام بیماری های زیر رنج میبرید؟",
                   style: TextStyle(fontSize: 22),

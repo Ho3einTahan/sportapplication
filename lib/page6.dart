@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sport_application/contact/divid_page6.dart';
 import 'package:sport_application/page7.dart';
 
 class page6 extends StatefulWidget {
@@ -23,7 +22,6 @@ class _page6State extends State<page6> {
         body: SafeArea(
           child: Column(
             children: [
-              divide6(),
               SizedBox(height: 30),
               Text(
                 "قد و وزن شما چقدر است؟",

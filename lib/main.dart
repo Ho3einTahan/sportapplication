@@ -1,7 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
-import 'package:sport_application/contact/drawer1.dart';
+import 'package:sport_application/setting/drawer1.dart';
 import 'package:sport_application/page1.dart';
 import 'package:sport_application/scrol.dart';
 
@@ -11,7 +11,7 @@ void main() {
       theme: ThemeData(fontFamily: "iranyekan"),
       debugShowCheckedModeBanner: false,
       home: (slider(
-        selectedindex: 5,
+        selectedIndex: 7,
       )),
     ),
   );

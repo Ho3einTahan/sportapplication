@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sport_application/contact/divid_page1.dart';
 import 'package:sport_application/page2.dart';
 
 class page1 extends StatefulWidget {
@@ -22,12 +21,6 @@ class _page1State extends State<page1> {
     return Center(
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              divide1(),
-            ],
-          ),
           SizedBox(height: 20),
           Text(
             "جنسیت خود را انتخاب کنید",

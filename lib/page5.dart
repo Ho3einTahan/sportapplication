@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sport_application/contact/divid_page5.dart';
 import 'package:sport_application/page6.dart';
 
 class page5 extends StatefulWidget {
@@ -23,7 +22,6 @@ class _page5State extends State<page5> {
         body: SafeArea(
           child: Column(
             children: [
-              divide5(),
               SizedBox(height: 20),
               Text(
                 "آمادگی جسمانی شما در چه سطحی است؟",

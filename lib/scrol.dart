@@ -3,24 +3,27 @@ import 'package:sport_application/page1.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class slider extends StatefulWidget {
-  slider({super.key, required this.selectedindex});
-  int selectedindex;
+  slider({super.key, required this.selectedIndex});
+
+  int selectedIndex;
+
   @override
   State<slider> createState() => _sliderState();
 }
 
 class _sliderState extends State<slider> {
   int? selected;
+
   @override
   void initState() {
     super.initState();
-    selected = widget.selectedindex;
+    selected = widget.selectedIndex;
   }
 
   @override
   Widget build(BuildContext context) {
-    String selecteditem = "item1";
-    List<String> itemlisst = ["item1", "item2", "item3", "item4"];
+    String selectedItem = "item1";
+    List<String> itemList = ["item1", "item2", "item3", "item4"];
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -29,7 +32,7 @@ class _sliderState extends State<slider> {
               padding: const EdgeInsets.only(top: 16),
               child: StepProgressIndicator(
                 totalSteps: 7,
-                padding: 6,
+                padding: 4,
                 selectedColor: Color.fromARGB(255, 55, 146, 55),
                 unselectedColor: Color.fromARGB(255, 217, 217, 217),
                 currentStep: selected!,
@@ -47,8 +50,7 @@ class _sliderState extends State<slider> {
                     color: Theme.of(context).hintColor,
                   ),
                 ),
-                items: itemlisst
-                    .map((item) => DropdownMenuItem<String>(
+                items: itemList.map((item) => DropdownMenuItem<String>(
                           value: item,
                           child: Text(
                             item,
@@ -58,10 +60,13 @@ class _sliderState extends State<slider> {
                           ),
                         ))
                     .toList(),
-                value: selecteditem,
+                value: selectedItem,
                 onChanged: (value) {
+                  print("this is data = ${itemList.indexOf(value.toString())}");
+
                   setState(() {
-                    selecteditem = value as String;
+                    selectedItem = "sdfds";
+                    selected = itemList.indexOf(value.toString()) + 1;
                   });
                 },
               ),

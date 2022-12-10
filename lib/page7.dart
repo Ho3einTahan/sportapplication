@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sport_application/contact/divid_page7.dart';
 import 'package:sport_application/page8.dart';
 
 class page7 extends StatefulWidget {
@@ -17,7 +16,6 @@ class _pageState extends State<page7> {
         body: SafeArea(
           child: Column(
             children: [
-              divide7(),
               SizedBox(height: 50),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
