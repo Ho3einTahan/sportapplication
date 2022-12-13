@@ -13,7 +13,7 @@ class _aboutState extends State<about> {
     return Column(
       children: [
         Container(
-          height: 80,
+          height: 90,
           width: 312,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -44,7 +44,7 @@ class _aboutState extends State<about> {
         ),
         SizedBox(height: 16),
         Container(
-          height: 80,
+          height: 90,
           width: 312,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -75,7 +75,7 @@ class _aboutState extends State<about> {
         ),
         SizedBox(height: 16),
         Container(
-          height: 80,
+          height: 90,
           width: 312,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,

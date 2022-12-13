@@ -10,9 +10,7 @@ void main() {
     MaterialApp(
       theme: ThemeData(fontFamily: "iranyekan"),
       debugShowCheckedModeBanner: false,
-      home: (slider(
-        selectedIndex: 7,
-      )),
+      home: (home()),
     ),
   );
 }
@@ -28,39 +26,42 @@ class home extends StatelessWidget {
           Expanded(
             flex: 70,
             child: ImageSlideshow(
-              // isLoop: true,
-              //autoPlayInterval: 1,
-              indicatorRadius: 3,
-              height: 0,
-              width: 450,
+              isLoop: false,
+              indicatorRadius: 5.5,
+              width: 300,
               children: [
-                Image.asset("images/fit2.jpg"),
+                Image.asset("images/water.png"),
                 Image.asset("images/fi3.png"),
                 Image.asset("images/fit4.jpg"),
                 Image.asset("images/fit6.png"),
               ],
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (BuildContext context) {
-                    return MyApp();
-                  },
-                ),
-              );
-            },
-            child: Text("click Me"),
+          Padding(
+            padding: const EdgeInsets.only(left: 260),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  minimumSize: Size(100, 48), primary: Colors.amber),
+              onPressed: (() {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return MyApp();
+                    },
+                  ),
+                );
+              }),
+              child: Text(
+                "next",
+                style: TextStyle(fontSize: 24),
+              ),
+            ),
           ),
         ],
       ),
       centered: true,
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
-      duration: 300000,
+      duration: 3000000,
       splashIconSize: 300,
       nextScreen: MyApp(),
     );

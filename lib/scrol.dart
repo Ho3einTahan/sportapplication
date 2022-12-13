@@ -1,29 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:sport_application/page1.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class slider extends StatefulWidget {
-  slider({super.key, required this.selectedIndex});
-
-  int selectedIndex;
+  const slider({super.key});
 
   @override
   State<slider> createState() => _sliderState();
 }
 
 class _sliderState extends State<slider> {
-  int? selected;
-
-  @override
-  void initState() {
-    super.initState();
-    selected = widget.selectedIndex;
-  }
-
+  String selecteditem = "دیابت";
+  List<String> items = [
+    "دیابت",
+    " کلسترول",
+    "فشار خون",
+    "چربی خون",
+  ];
   @override
   Widget build(BuildContext context) {
-    String selectedItem = "item1";
-    List<String> itemList = ["item1", "item2", "item3", "item4"];
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -35,40 +29,41 @@ class _sliderState extends State<slider> {
                 padding: 4,
                 selectedColor: Color.fromARGB(255, 55, 146, 55),
                 unselectedColor: Color.fromARGB(255, 217, 217, 217),
-                currentStep: selected!,
+                currentStep: 4,
                 direction: Axis.horizontal,
                 size: 5.5,
                 roundedEdges: Radius.circular(10),
               ),
             ),
-            DropdownButtonHideUnderline(
-              child: DropdownButton(
-                hint: Text(
-                  'Select Item',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Theme.of(context).hintColor,
-                  ),
-                ),
-                items: itemList.map((item) => DropdownMenuItem<String>(
-                          value: item,
-                          child: Text(
-                            item,
-                            style: const TextStyle(
-                              fontSize: 14,
-                            ),
-                          ),
-                        ))
-                    .toList(),
-                value: selectedItem,
-                onChanged: (value) {
-                  print("this is data = ${itemList.indexOf(value.toString())}");
+            Container(
+              width: 311,
+              height: 48,
+              child: Directionality(
+                textDirection: TextDirection.rtl,
+                child: DropdownButton(
+                  borderRadius: BorderRadius.circular(12),
 
-                  setState(() {
-                    selectedItem = "sdfds";
-                    selected = itemList.indexOf(value.toString()) + 1;
-                  });
-                },
+                  // Initial Value
+                  value: selecteditem,
+
+                  // Down Arrow Icon
+                  icon: const Icon(Icons.keyboard_arrow_down),
+
+                  // Array list of items
+                  items: items.map((String items) {
+                    return DropdownMenuItem(
+                      value: items,
+                      child: Text(items),
+                    );
+                  }).toList(),
+                  // After selecting the desired option,it will
+                  // change button value to selected value
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      selecteditem = newValue!;
+                    });
+                  },
+                ),
               ),
             ),
           ],
