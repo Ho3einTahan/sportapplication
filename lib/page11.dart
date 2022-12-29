@@ -20,7 +20,10 @@ class _page11State extends State<page11> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(Icons.arrow_back),
+              icon: Icon(
+                Icons.arrow_right_alt_sharp,
+                size: 35,
+              ),
             ),
           ],
           backgroundColor: Color.fromARGB(255, 63, 170, 101),
@@ -70,6 +73,7 @@ class _page11State extends State<page11> {
                   ),
                 ),
                 SizedBox(height: 10),
+                
                 Text(
                   "(Bmi)این نرم افزار باتوجه به شاخص توده بدنی",
                   style: TextStyle(

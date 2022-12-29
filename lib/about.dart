@@ -30,7 +30,10 @@ class _aboutState extends State<about> {
               ),
               Padding(
                 padding: const EdgeInsets.all(2.0),
-                child: Text(" توسعه دهنده موبایل"),
+                child: Text(
+                  " توسعه دهنده موبایل",
+                  textAlign: TextAlign.justify,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(2.0),
