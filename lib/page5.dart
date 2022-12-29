@@ -114,7 +114,7 @@ class _page5State extends State<page5> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size(312, 48),
-                    primary: Color.fromARGB(255, 63, 170, 101),
+                    primary: Color.fromARGB(255, 63, 170, 102),
                   ),
                   onPressed: () {
                     Navigator.of(context).push(
