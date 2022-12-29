@@ -117,7 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Color(0xff4FAF30),
               ),
               title: Text(
-                menuItem.title,
+                menuItem.title,textAlign: TextAlign.center,
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
               ),
             ),
