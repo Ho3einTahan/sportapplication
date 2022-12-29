@@ -33,7 +33,7 @@ class _page1State extends State<page1> {
             child: Row(
               children: [
                 SizedBox(
-                  width: 45,
+                  width: 44.5,
                 ),
                 InkWell(
                   onTap: () {
