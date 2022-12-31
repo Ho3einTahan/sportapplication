@@ -1,68 +1,142 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
-import 'package:sport_application/scrol.dart';
+
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:sport_application/login_Page.dart';
+import 'package:sport_application/model/data/appdata.dart';
 import 'package:sport_application/setting/drawer1.dart';
-import 'package:sport_application/page1.dart';
+import 'package:sport_application/sign_Up.dart';
 
 void main() {
   runApp(
     MaterialApp(
       theme: ThemeData(fontFamily: "iranyekan"),
       debugShowCheckedModeBanner: false,
-      home: (MyApp()),
+      home: (signUp_Page()),
     ),
   );
 }
 
-class home extends StatelessWidget {
-  const home({super.key});
+class home extends StatefulWidget {
+  home({super.key});
+
+  @override
+  State<home> createState() => _homeState();
+}
+
+class _homeState extends State<home> {
+  final PageController pageController = PageController();
+  final image_Path = appDataBase().imagePath;
+  final content_Page = appDataBase().contentPageView;
+  int page = 0;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    pageController.addListener(() {
+      if (pageController.page!.round() != page) {
+        setState(() {
+          page = pageController.page!.round();
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedSplashScreen(
-      splash: Column(
-        children: [
-          Expanded(
-            flex: 70,
-            child: ImageSlideshow(
-              isLoop: false,
-              indicatorRadius: 5.5,
-              width: 300,
-              children: [
-                Image.asset("images/lunch.png"),
-                Image.asset("images/dambel.png"),
-                Image.asset("images/heart.png"),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 260),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  minimumSize: Size(100, 48), primary: Colors.amber),
-              onPressed: (() {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return MyApp();
-                    },
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                child: Expanded(
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(0, 200, 0, 0),
+                          child: PageView.builder(
+                            controller: pageController,
+                            itemCount: image_Path.length,
+                            itemBuilder: ((context, index) {
+                              return Column(
+                                children: [
+                                  Image.asset(
+                                    "${image_Path[index].imagePath}",
+                                    width: 179,
+                                    height: 179,
+                                  ),
+                                  SizedBox(height: 100),
+                                  Text(
+                                    content_Page[index].contentPageView,
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              );
+                            }),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                );
-              }),
-              child: Text(
-                "next",
-                style: TextStyle(fontSize: 24),
+                ),
               ),
-            ),
+              Container(
+                padding: EdgeInsets.fromLTRB(30, 0, 0, 50),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    SmoothPageIndicator(
+                      controller: pageController,
+                      count: content_Page.length,
+                      effect: ExpandingDotsEffect(
+                        activeDotColor: Color(0xff4FAF30),
+                        dotColor: Color(0xffD9D9D9),
+                        dotWidth: 8,
+                        dotHeight: 8,
+                      ),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: Size(56, 56),
+                        primary: Color(0xff4FAF30),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          if (page == image_Path.length - 1) {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(builder: (contex) {
+                                return MyApp();
+                              }),
+                            );
+                          } else {
+                            pageController.animateToPage(page + 1,
+                                duration: Duration(milliseconds: 500),
+                                curve: Curves.decelerate);
+                          }
+                        });
+                      },
+                      child: Icon(
+                        page == image_Path.length - 1
+                            ? CupertinoIcons.check_mark
+                            : CupertinoIcons.arrow_right,
+                        size: 23,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
-      centered: true,
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
-      duration: 3000000,
-      splashIconSize: 300,
-      nextScreen: MyApp(),
     );
   }
 }
