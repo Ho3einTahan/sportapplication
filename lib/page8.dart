@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sport_application/page9.dart';
+import 'package:sport_application/Day_Page.dart';
 import 'package:sport_application/setting/drawer1.dart';
 
 class page8 extends StatefulWidget {
@@ -196,7 +196,7 @@ class _page8State extends State<page8> {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (BuildContext context) {
-                          return page9();
+                          return Day_Page();
                         },
                       ),
                     );

@@ -1,18 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:sport_application/login_Page.dart';
+import 'package:sport_application/Loading_Page.dart';
+
 import 'package:sport_application/model/data/appdata.dart';
+import 'package:sport_application/Day_Page.dart';
+import 'package:sport_application/scrol.dart';
+
 import 'package:sport_application/setting/drawer1.dart';
-import 'package:sport_application/sign_Up.dart';
 
 void main() {
   runApp(
     MaterialApp(
       theme: ThemeData(fontFamily: "iranyekan"),
       debugShowCheckedModeBanner: false,
-      home: (signUp_Page()),
+      home: (Day_Page()),
     ),
   );
 }

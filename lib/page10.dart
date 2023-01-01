@@ -25,7 +25,7 @@ class _page10State extends State<page10> {
             ),
           ],
           centerTitle: true,
-          backgroundColor: Color.fromARGB(255, 63, 170, 103),
+          backgroundColor: Color(0xff4FAF30),
           title: Text(
             "برنامه تمرینی",
             style: TextStyle(fontSize: 20),
@@ -38,7 +38,7 @@ class _page10State extends State<page10> {
                 SizedBox(height: 16),
                 Center(
                   child: Container(
-                    height: 99,
+                    height: 129,
                     width: 312,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -78,6 +78,7 @@ class _page10State extends State<page10> {
                       borderRadius: BorderRadius.circular(8),
                       color: Color.fromARGB(100, 0, 0, 0),
                       image: DecorationImage(
+                        fit: BoxFit.cover,
                         image: AssetImage("images/mango.png"),
                       ),
                     ),
@@ -220,10 +221,10 @@ class _page10State extends State<page10> {
                             ),
                           ),
                           Text(
-                            "چهار ست دهتایی",
+                            'سی الی چهل دقیقه',
                             style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                         ],
@@ -243,7 +244,7 @@ class _page10State extends State<page10> {
                     children: [
                       SizedBox(width: 10),
                       Image.asset(
-                        "images/parvane.png",
+                        "images/zanoobala.png",
                         width: 55,
                         height: 55,
                       ),
@@ -251,7 +252,7 @@ class _page10State extends State<page10> {
                       Column(
                         children: [
                           Text(
-                            "پروانه",
+                            "زانو بالا",
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,

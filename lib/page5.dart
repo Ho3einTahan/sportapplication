@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sport_application/page6.dart';
+import 'package:sport_application/Bmi_Page.dart';
 
 class page5 extends StatefulWidget {
   const page5({super.key});
@@ -120,7 +120,7 @@ class _page5State extends State<page5> {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (BuildContext context) {
-                          return page6();
+                          return bmi_Page();
                         },
                       ),
                     );
