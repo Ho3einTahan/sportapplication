@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:sport_application/page2.dart';
 
-class page1 extends StatefulWidget {
-  page1({super.key});
+class gender_Page extends StatefulWidget {
+  gender_Page({super.key});
 
   @override
-  State<page1> createState() => _page1State();
+  State<gender_Page> createState() => _gender_PageState();
 }
 
-class _page1State extends State<page1> {
+class _gender_PageState extends State<gender_Page> {
   double scale = 1;
   double scal1 = 1;
   double opacity = 0.9;
@@ -20,6 +20,8 @@ class _page1State extends State<page1> {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(height: 20),
           Text(
@@ -127,7 +129,7 @@ class _page1State extends State<page1> {
               ),
             ],
           ),
-          SizedBox(height: 16),
+          SizedBox(height: 180),
           Visibility(
             visible: isvisible,
             child: ClipRRect(
@@ -135,7 +137,7 @@ class _page1State extends State<page1> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(312, 48),
-                  primary: Color.fromARGB(255, 63, 170, 101),
+                  primary: Color(0xff4FAF30),
                 ),
                 onPressed: () {
                   Navigator.of(context).push(

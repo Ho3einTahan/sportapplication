@@ -1,20 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:sport_application/Loading_Page.dart';
-
+import 'package:sport_application/gender_Page.dart';
 import 'package:sport_application/model/data/appdata.dart';
-import 'package:sport_application/Day_Page.dart';
-import 'package:sport_application/scrol.dart';
 
-import 'package:sport_application/setting/drawer1.dart';
+import 'package:sport_application/setting/Menu_Page.dart';
 
 void main() {
   runApp(
     MaterialApp(
-      theme: ThemeData(fontFamily: "iranyekan"),
       debugShowCheckedModeBanner: false,
-      home: (Day_Page()),
+      home: (MyApp()),
     ),
   );
 }
@@ -154,10 +150,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // drawer: drawer(),
-      //  endDrawer: drawer(),
+      appBar: AppBar(),
+      endDrawer: Drawer(
+        child: Menu_Page(title: "title"),
+      ),
       backgroundColor: Colors.white,
-      body: drawer(),
+      body: gender_Page(),
     );
   }
 }

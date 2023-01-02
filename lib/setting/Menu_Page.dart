@@ -1,29 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:sport_application/page1.dart';
+import 'package:sport_application/gender_Page.dart';
+
 import 'package:sport_application/page2.dart';
 
-class drawer extends StatelessWidget {
-  drawer({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(),
-      home: MyHomePage(title: ''),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+class Menu_Page extends StatefulWidget {
+  Menu_Page({super.key, required this.title});
   final String title;
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<Menu_Page> createState() => _Menu_PageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _Menu_PageState extends State<Menu_Page> {
   List<Menu> data = [];
 
   @override
@@ -34,37 +23,22 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
   }
 
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 63, 170, 101),
-          title: Text(widget.title),
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: ListView.separated(
+        padding: EdgeInsets.only(top: 0),
+        itemCount: data.length,
+        itemBuilder: (BuildContext context, int index) {
+          if (index == 0) {
+            return _buildDrawerHeader(data[index]);
+          }
+          return _buildMenuList(data[index]);
+        },
+        separatorBuilder: (BuildContext context, int index) => Divider(
+          height: 1,
+          thickness: 2,
         ),
-        endDrawer: Directionality(
-          textDirection: TextDirection.rtl,
-          child: Drawer(
-            child: _buildDrawer(),
-          ),
-        ),
-        body: Center(
-          child: page1(),
-        ));
-  }
-
-  Widget _buildDrawer() {
-    return ListView.separated(
-      padding: EdgeInsets.only(top: 0),
-      itemCount: data.length,
-      itemBuilder: (BuildContext context, int index) {
-        if (index == 0) {
-          return _buildDrawerHeader(data[index]);
-        }
-        return _buildMenuList(data[index]);
-      },
-      separatorBuilder: (BuildContext context, int index) => Divider(
-        height: 1,
-        thickness: 2,
       ),
     );
   }
@@ -97,15 +71,9 @@ class _MyHomePageState extends State<MyHomePage> {
     double rp = 0;
     double fontSize = 22;
     if (menuItem.level == 1) {
-      lp = 0;
+      lp = 120;
       fontSize = 16;
     }
-    if (menuItem.level == 2) {
-      lp = 30;
-
-      fontSize = 14;
-    }
-
     if (menuItem.children.isEmpty) {
       return Builder(builder: (context) {
         return InkWell(
@@ -117,7 +85,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Color(0xff4FAF30),
               ),
               title: Text(
-                menuItem.title,textAlign: TextAlign.center,
+                menuItem.title,
+                textAlign: TextAlign.center,
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
               ),
             ),
@@ -127,14 +96,11 @@ class _MyHomePageState extends State<MyHomePage> {
               context,
               MaterialPageRoute(builder: (context) {
                 if (menuItem.title == "صفحه اصلی") {
-                  return drawer();
+                  return Drawer();
                 } else if (menuItem.title == "تغیر بیماری ها") {
                   return page2();
-                }
-                else if(menuItem.title==""){
-
-                }
-                return page1();
+                } else if (menuItem.title == "") {}
+                return gender_Page();
               }),
             );
           },
@@ -148,6 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
         leading: Icon(menuItem.icon),
         title: Text(
           menuItem.title,
+          textAlign: TextAlign.end,
           style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.bold),
         ),
         children: menuItem.children.map(_buildMenuList).toList(),
@@ -158,7 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 //The Menu Model
 class Menu {
-  int level = 0;
+  int level = 1;
   IconData icon = CupertinoIcons.check_mark;
   String title = "";
   List<Menu> children = [];
@@ -226,8 +193,14 @@ List dataList = [
   },
   {
     "level": 1,
-    "icon": CupertinoIcons.info_circle,
+    "icon": Icons.settings,
+    "title": "تنظیمات",
+  },
+  {
+    "level": 1,
+    "icon": FontAwesomeIcons.circleInfo,
     "title": "درباره ما",
   },
+
   //menu data item
 ];

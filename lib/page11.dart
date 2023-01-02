@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sport_application/about.dart';
+import 'package:sport_application/setting/about_Page.dart';
 
 class page11 extends StatefulWidget {
   const page11({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sport_application/Day_Page.dart';
-import 'package:sport_application/setting/drawer1.dart';
+import 'package:sport_application/setting/Menu_Page.dart';
 
 class page8 extends StatefulWidget {
   page8({super.key, this.result2 = ""});
@@ -18,7 +18,7 @@ class _page8State extends State<page8> {
       theme: ThemeData(fontFamily: "iranyekan"),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        drawer: drawer(),
+        drawer: Drawer(),
         appBar: AppBar(
           actions: [
             Padding(

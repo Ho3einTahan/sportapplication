@@ -36,6 +36,7 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
   percent_indicator: ^4.2.2
   liquid_progress_indicator: ^0.4.0
+  multi_dropdown: ^1.0.6
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -85,6 +86,13 @@ flutter:
   - family: iranyekan
     fonts:
       - asset: fonts/iranyekan.ttf
+        weight: 400
+      - asset: fonts/iranyekan-extrablack.ttf
+        weight: 500
+      - asset: fonts/iranyekan-bold.ttf
+        weight: 700
+      - asset: fonts/iranyekan-black.ttf
+        weight: 300
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
