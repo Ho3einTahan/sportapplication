@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:sport_application/VideoPlayer_Page.dart';
 import 'package:sport_application/gender_Page.dart';
 import 'package:sport_application/model/data/appdata.dart';
-
 import 'package:sport_application/setting/Menu_Page.dart';
 
 void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: (MyApp()),
+      home: (SamplePlayer()),
     ),
   );
 }

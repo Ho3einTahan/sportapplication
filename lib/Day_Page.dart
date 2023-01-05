@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sport_application/page10.dart';
+import 'package:sport_application/Exercise_Page.dart';
 import 'package:sport_application/page11.dart';
+import 'package:sport_application/setting/Menu_Page.dart';
 
 class Day_Page extends StatefulWidget {
   const Day_Page({super.key});
@@ -18,26 +19,24 @@ class _Day_PageState extends State<Day_Page> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        endDrawer: Drawer(child: Menu_Page(title: "hello")),
         appBar: AppBar(
-          actions: [
-            IconButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return page10();
-                    },
-                  ),
-                );
-              },
-              icon: Icon(Icons.arrow_forward),
-            ),
-          ],
+          toolbarHeight: 105,
+          elevation: 0,
           centerTitle: true,
-          backgroundColor: Color(0xff4FAF30),
+          backgroundColor: Colors.transparent,
           title: Text(
             "برنامه تمرینی",
             style: TextStyle(fontSize: 20),
+          ),
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              color: Color(0xff4FAF30),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(12),
+                bottomRight: Radius.circular(12),
+              ),
+            ),
           ),
         ),
         body: SafeArea(
@@ -94,7 +93,7 @@ class _Day_PageState extends State<Day_Page> {
                       ],
                     ),
                     decoration: BoxDecoration(
-                      color: Color(0xff6CBC52),
+                      color: Color(0xff4FAF30),
                       borderRadius: BorderRadius.circular(16),
                     ),
                   ),
@@ -148,39 +147,48 @@ class _Day_PageState extends State<Day_Page> {
                   ),
                 ),
                 SizedBox(height: 32),
-                Container(
-                  height: 85,
-                  width: 312,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Transform.scale(
-                        scale: 1.5,
-                        child: Radio(
-                            activeColor: Color(0xff4FAF30),
-                            value: 1,
-                            groupValue: _value,
-                            onChanged: (int? value) {
-                              setState(() {
-                                _value = value!;
-                              });
-                            }),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => exercise_Page(),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "روز اول",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
+                    );
+                  },
+                  child: Container(
+                    height: 85,
+                    width: 312,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Transform.scale(
+                          scale: 1.5,
+                          child: Radio(
+                              activeColor: Color(0xff4FAF30),
+                              value: 1,
+                              groupValue: _value,
+                              onChanged: (int? value) {
+                                setState(() {
+                                  _value = value!;
+                                });
+                              }),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "روز اول",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 226, 226, 226),
-                    borderRadius: BorderRadius.circular(12),
+                      ],
+                    ),
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 226, 226, 226),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
                 ),
                 SizedBox(height: 16),

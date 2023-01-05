@@ -1,34 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:sport_application/Ready_Page.dart';
 
-class page10 extends StatefulWidget {
-  const page10({super.key});
+class exercise_Page extends StatefulWidget {
+  const exercise_Page({super.key});
 
   @override
-  State<page10> createState() => _page10State();
+  State<exercise_Page> createState() => _exercise_PageState();
 }
 
-class _page10State extends State<page10> {
+class _exercise_PageState extends State<exercise_Page> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          actions: [
-            IconButton(
-              onPressed: () {
-                Navigator.of(context).pop(
-                  context,
-                );
-              },
-              icon: Icon(Icons.arrow_back),
-            ),
-          ],
+          toolbarHeight: 105,
+          elevation: 0,
           centerTitle: true,
-          backgroundColor: Color(0xff4FAF30),
+          backgroundColor: Colors.transparent,
           title: Text(
             "برنامه تمرینی",
             style: TextStyle(fontSize: 20),
+          ),
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              color: Color(0xff4FAF30),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(12),
+                bottomRight: Radius.circular(12),
+              ),
+            ),
           ),
         ),
         body: SafeArea(
@@ -85,41 +87,50 @@ class _page10State extends State<page10> {
                   ),
                 ),
                 SizedBox(height: 16),
-                Container(
-                  height: 80,
-                  width: 312,
-                  child: Row(
-                    children: [
-                      SizedBox(width: 10),
-                      Image.asset(
-                        "images/adam1.png",
-                        width: 55,
-                        height: 55,
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => Ready_Page(),
                       ),
-                      SizedBox(width: 110),
-                      Column(
-                        children: [
-                          Text(
-                            "دویدن",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
+                    );
+                  },
+                  child: Container(
+                    height: 80,
+                    width: 312,
+                    child: Row(
+                      children: [
+                        SizedBox(width: 10),
+                        Image.asset(
+                          "images/adam1.png",
+                          width: 55,
+                          height: 55,
+                        ),
+                        SizedBox(width: 110),
+                        Column(
+                          children: [
+                            Text(
+                              "دویدن",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
-                          ),
-                          Text(
-                            "ده دقیقه",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
+                            Text(
+                              "ده دقیقه",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 226, 226, 226),
-                    borderRadius: BorderRadius.circular(12),
+                          ],
+                        ),
+                      ],
+                    ),
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 226, 226, 226),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
                 ),
                 SizedBox(height: 16),
