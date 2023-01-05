@@ -67,6 +67,7 @@ class _bmi_PageState extends State<bmi_Page> {
             SizedBox(height: 15),
             Slider(
               value: weight,
+              divisions: 10,
               min: 40,
               max: 180,
               activeColor: Color(0xff4FAF30),

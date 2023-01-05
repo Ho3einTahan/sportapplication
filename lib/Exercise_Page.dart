@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sport_application/Ready_Page.dart';
+import 'package:video_player/video_player.dart';
 
 class exercise_Page extends StatefulWidget {
   const exercise_Page({super.key});

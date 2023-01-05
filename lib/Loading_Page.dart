@@ -49,30 +49,6 @@ class _loading_PageState extends State<loading_Page> {
               ),
             ),
             SizedBox(height: 68),
-            // Container(
-            //   width: 200,
-            //   height: 200,
-            //   child: LiquidCircularProgressIndicator(
-            //     value: (valuProgress / 100), // Defaults to 0.5.
-            //     valueColor: AlwaysStoppedAnimation(Colors
-            //         .white), // Defaults to the current Theme's accentColor.
-            //     backgroundColor: Colors
-            //         .white, // Defaults to the current Theme's backgroundColor.
-            //     borderColor: Color(0xff4FAF30),
-            //     borderWidth: 5.0,
-            //     direction: Axis
-            //         .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
-            //     center: Text(
-            //       "${valuProgress.round().toString()}%",
-            //       style: TextStyle(
-            //         fontSize: 40,
-            //         color: Color(0xff3B9B1C),
-            //         fontWeight: FontWeight.w600,
-            //       ),
-            //     ),
-            //   ),
-            // ),
-
             CircularPercentIndicator(
               radius: 100.0,
               lineWidth: 5.0,

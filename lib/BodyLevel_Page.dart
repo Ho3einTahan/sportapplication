@@ -1,40 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:sport_application/Bmi_Page.dart';
 
-class page5 extends StatefulWidget {
-  const page5({super.key});
+class BodyLevel_Page extends StatefulWidget {
+  const BodyLevel_Page({super.key});
 
   @override
-  State<page5> createState() => _page5State();
+  State<BodyLevel_Page> createState() => _BodyLevel_PageState();
 }
 
-class _page5State extends State<page5> {
-  Color color1 = Color.fromARGB(255, 226, 226, 226);
-  Color color2 = Color.fromARGB(255, 226, 226, 226);
-  Color color3 = Color.fromARGB(255, 226, 226, 226);
-  Color color4 = Color.fromARGB(255, 226, 226, 226);
+class _BodyLevel_PageState extends State<BodyLevel_Page> {
+  Color color1 = Color(0xffF2F2F2);
+  Color color2 = Color(0xffF2F2F2);
+  Color color3 = Color(0xffF2F2F2);
+  Color color4 = Color(0xffF2F2F2);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.white,
-        body: SafeArea(
+        body: Padding(
+          padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 20),
               Text(
                 "آمادگی جسمانی شما در چه سطحی است؟",
                 style: TextStyle(fontSize: 22),
               ),
-              SizedBox(height: 32),
+              SizedBox(height: 62),
               InkWell(
                 onTap: () {
                   setState(() {
-                    if (color1 == Color.fromARGB(255, 226, 226, 226)) {
-                      color1 = Color.fromARGB(255, 63, 170, 101);
+                    if (color1 == Color(0xffF2F2F2)) {
+                      color1 = Color(0xff3B9B1C);
                     } else {
-                      color1 = Color.fromARGB(255, 226, 226, 226);
+                      color1 = Color(0xffF2F2F2);
                     }
                   });
                 },
@@ -54,14 +55,24 @@ class _page5State extends State<page5> {
                   ),
                 ),
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 24),
+              ListTile(
+                mouseCursor: MouseCursor.uncontrolled,
+                hoverColor: Colors.red,
+                selectedTileColor: Colors.red,
+                selectedColor: Colors.red,
+                onTap: () {},
+                title: Text("kffj"),
+                trailing: Text("red"),
+                leading: Icon(Icons.home),
+              ),
               InkWell(
                 onTap: () {
                   setState(() {
-                    if (color2 == Color.fromARGB(255, 226, 226, 226)) {
-                      color2 = Color.fromARGB(255, 63, 170, 101);
+                    if (color2 == Color(0xffF2F2F2)) {
+                      color2 = Color(0xff3B9B1C);
                     } else {
-                      color2 = Color.fromARGB(255, 226, 226, 226);
+                      color2 = Color(0xffF2F2F2);
                     }
                   });
                 },
@@ -81,14 +92,14 @@ class _page5State extends State<page5> {
                   ),
                 ),
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 24),
               InkWell(
                 onTap: () {
                   setState(() {
-                    if (color3 == Color.fromARGB(255, 226, 226, 226)) {
-                      color3 = Color.fromARGB(255, 63, 170, 101);
+                    if (color3 == Color(0xffF2F2F2)) {
+                      color3 = Color(0xff3B9B1C);
                     } else {
-                      color3 = Color.fromARGB(255, 226, 226, 226);
+                      color3 = Color(0xffF2F2F2);
                     }
                   });
                 },
@@ -114,7 +125,7 @@ class _page5State extends State<page5> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size(312, 48),
-                    primary: Color.fromARGB(255, 63, 170, 102),
+                    primary: Color(0xff4FAF30),
                   ),
                   onPressed: () {
                     Navigator.of(context).push(

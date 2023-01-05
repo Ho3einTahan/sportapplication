@@ -1,16 +1,33 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:sport_application/VideoPlayer_Page.dart';
+import 'package:sport_application/BodyLevel_Page.dart';
+import 'package:sport_application/Day_Page.dart';
+import 'package:sport_application/Exercise_Page.dart';
+import 'package:sport_application/Loading_Page.dart';
+import 'package:sport_application/Login_Page.dart';
+import 'package:sport_application/Ready_Page.dart';
+import 'package:sport_application/Sign_Up.dart';
 import 'package:sport_application/gender_Page.dart';
 import 'package:sport_application/model/data/appdata.dart';
+import 'package:sport_application/scrol.dart';
 import 'package:sport_application/setting/Menu_Page.dart';
 
 void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: (SamplePlayer()),
+      home: FutureBuilder<bool>(
+        future: access_data(),
+        builder: (context, snapshot) {
+            if (snapshot.data == true) {
+              return signUp_Page();
+            } else {
+              return home();
+            }
+        },
+      ),
     ),
   );
 }
@@ -157,5 +174,15 @@ class _MyAppState extends State<MyApp> {
       backgroundColor: Colors.white,
       body: gender_Page(),
     );
+  }
+}
+
+Future<bool> access_data() async {
+  final prefs = await SharedPreferences.getInstance();
+  final bool? is_view_splash = prefs.getBool('is_splash');
+  if (is_view_splash == true) {
+    return true;
+  } else {
+    return false;
   }
 }
