@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sport_application/Exercise_Page.dart';
-import 'package:sport_application/page11.dart';
+import 'package:sport_application/About_Page.dart';
 import 'package:sport_application/setting/Menu_Page.dart';
 
 class Day_Page extends StatefulWidget {

@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sport_application/About_Page.dart';
+import 'package:sport_application/Bmi_Page.dart';
+import 'package:sport_application/Day_Page.dart';
 import 'package:sport_application/gender_Page.dart';
 
-import 'package:sport_application/page2.dart';
+import 'package:sport_application/Sickness_Page.dart';
+import 'package:sport_application/setting/about_Page.dart';
 
 class Menu_Page extends StatefulWidget {
   Menu_Page({super.key, required this.title});
@@ -96,11 +100,15 @@ class _Menu_PageState extends State<Menu_Page> {
               context,
               MaterialPageRoute(builder: (context) {
                 if (menuItem.title == "صفحه اصلی") {
-                  return Drawer();
+                  return Day_Page();
                 } else if (menuItem.title == "تغیر بیماری ها") {
-                  return page2();
-                } else if (menuItem.title == "") {}
-                return gender_Page();
+                  return Sickness_Page();
+                } else if (menuItem.title == "تغیر قد و وزن") {
+                  return bmi_Page();
+                } else if (menuItem.title == "درباره ما") {
+                  return About_Page();
+                }
+                return bmi_Page();
               }),
             );
           },

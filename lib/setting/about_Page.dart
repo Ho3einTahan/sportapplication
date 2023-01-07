@@ -13,7 +13,75 @@ class _aboutState extends State<about> {
     return Column(
       children: [
         Container(
-          height: 90,
+          height: 63,
+          width: 312,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child:
+                    Image.asset("images/telephone.png", width: 20, height: 20),
+              ),
+            ],
+          ),
+          decoration: BoxDecoration(
+            color: Color(0xffF2F2F2),
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+        SizedBox(height: 16),
+        Container(
+          height: 63,
+          width: 312,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child:
+                    Image.asset("images/instagram.png", width: 20, height: 20),
+              ),
+            ],
+          ),
+          decoration: BoxDecoration(
+            color: Color(0xffF2F2F2),
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+        SizedBox(height: 16),
+        Container(
+          height: 63,
+          width: 312,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child:
+                    Image.asset("images/telegram.png", width: 20, height: 20),
+              ),
+            ],
+          ),
+          decoration: BoxDecoration(
+            color: Color(0xffF2F2F2),
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+        SizedBox(height: 24),
+        Padding(
+          padding: const EdgeInsets.only(left: 260),
+          child: Text(
+            ": اعضای تیم ",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 20,
+            ),
+          ),
+        ),
+        SizedBox(height: 16),
+        Container(
+          height: 63,
           width: 312,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -23,7 +91,7 @@ class _aboutState extends State<about> {
                 child: Text(
                   "حسین طحان",
                   style: TextStyle(
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.w500,
                     fontSize: 18,
                   ),
                 ),
@@ -33,78 +101,87 @@ class _aboutState extends State<about> {
                 child: Text(
                   " توسعه دهنده موبایل",
                   textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(2.0),
-                child: Text(" 09905891724"),
               ),
             ],
           ),
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 242, 242, 242),
+            color: Color(0xffF2F2F2),
+            borderRadius: BorderRadius.circular(16),
           ),
         ),
         SizedBox(height: 16),
         Container(
-          height: 90,
+          height: 63,
           width: 312,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Padding(
-                padding: const EdgeInsets.all(1.0),
+                padding: const EdgeInsets.all(2.0),
                 child: Text(
-                  " محمد ذیلایی",
+                  "محمد ذیلایی",
                   style: TextStyle(
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.w500,
                     fontSize: 18,
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(2.0),
-                child: Text(" طراح تجربه رابط کاربری"),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(0.5),
-                child: Text("۰۹۳۶۴۱۷۵۶۱۵"),
+                child: Text(
+                  "طراح تجربه کاربری",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
+                  ),
+                ),
               ),
             ],
           ),
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 242, 242, 242),
+            color: Color(0xffF2F2F2),
+            borderRadius: BorderRadius.circular(16),
           ),
         ),
         SizedBox(height: 16),
         Container(
-          height: 90,
+          height: 63,
           width: 312,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Padding(
-                padding: const EdgeInsets.all(1.0),
+                padding: const EdgeInsets.all(2.0),
                 child: Text(
-                  "  مهدی درویش پور",
+                  "محمد مهدی درویش پور",
                   style: TextStyle(
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.w500,
                     fontSize: 18,
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(2.0),
-                child: Text(" طراح تجربه رابط کاربری"),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(0.5),
-                child: Text("۰۹۳۶۸۳۶۹۲۹۸"),
+                child: Text(
+                  "طراح تجربه کاربری",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
+                  ),
+                ),
               ),
             ],
           ),
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 242, 242, 242),
+            color: Color(0xffF2F2F2),
+            borderRadius: BorderRadius.circular(16),
           ),
         ),
       ],

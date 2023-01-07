@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sport_application/page2.dart';
+import 'package:sport_application/Sickness_Page.dart';
+import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class gender_Page extends StatefulWidget {
   gender_Page({super.key});
@@ -18,12 +19,22 @@ class _gender_PageState extends State<gender_Page> {
   bool visible1 = false;
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
+    return Scaffold(
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(height: 20),
+          StepProgressIndicator(
+            totalSteps: 7,
+            padding: 4,
+            selectedColor: Color(0xff4FAF30),
+            unselectedColor: Color.fromARGB(255, 217, 217, 217),
+            currentStep: 1,
+            direction: Axis.horizontal,
+            size: 5.5,
+            roundedEdges: Radius.circular(20),
+          ),
+          SizedBox(height: 32),
           Text(
             "جنسیت خود را انتخاب کنید",
             style: TextStyle(fontSize: 22),
@@ -143,7 +154,7 @@ class _gender_PageState extends State<gender_Page> {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (BuildContext context) {
-                        return page2();
+                        return Sickness_Page();
                       },
                     ),
                   );

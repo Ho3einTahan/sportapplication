@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:sport_application/ResultExersice_Page.dart';
+import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class loading_Page extends StatefulWidget {
   const loading_Page({super.key});
@@ -25,6 +27,11 @@ class _loading_PageState extends State<loading_Page> {
           valuProgress = valuProgress + 1;
         });
       } else {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) {
+            return ResultExersice_Page();
+          }),
+        );
         timer.cancel();
       }
     });
@@ -36,6 +43,18 @@ class _loading_PageState extends State<loading_Page> {
       body: SafeArea(
         child: Column(
           children: [
+            SizedBox(height: 24),
+            StepProgressIndicator(
+              totalSteps: 7,
+              padding: 4,
+              selectedColor: Color(0xff4FAF30),
+              unselectedColor: Color.fromARGB(255, 217, 217, 217),
+              currentStep: 7,
+              direction: Axis.horizontal,
+              size: 5.5,
+              roundedEdges: Radius.circular(10),
+            ),
+            SizedBox(height: 40),
             Center(
               child: Padding(
                 padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
@@ -66,7 +85,7 @@ class _loading_PageState extends State<loading_Page> {
             ),
             SizedBox(height: 36),
             Text(
-              "درحال آماده سازی برنامه بر اساس هدفتان",
+              "...درحال ارسال وضعیت بدنی شما به مربی",
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w400,

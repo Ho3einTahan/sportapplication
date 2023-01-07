@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class login_Page extends StatefulWidget {
-  const login_Page({super.key});
+  login_Page({super.key});
 
   @override
   State<login_Page> createState() => _login_PageState();
@@ -12,6 +12,7 @@ class _login_PageState extends State<login_Page> {
   final TextEditingController textpassWord = TextEditingController();
   final TextEditingController textphoneNumber = TextEditingController();
   final TextEditingController textbirthDay = TextEditingController();
+  bool isshow = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,46 +25,97 @@ class _login_PageState extends State<login_Page> {
                   padding: EdgeInsets.fromLTRB(158, 133, 158, 0),
                   child: Text(
                     "ورود",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
                   ),
                 ),
               ),
-              SizedBox(height: 52),
+              SizedBox(height: 50),
               Container(
                 width: 320,
-                height: 48,
+                height: 80,
                 child: Directionality(
                   textDirection: TextDirection.rtl,
-                  child: TextField(
-                    controller: textuserName,
-                    decoration: InputDecoration(
-                      label: Text("نام کاربری"),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
+                  child: Form(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    child: TextFormField(
+                      controller: textuserName,
+                      decoration: InputDecoration(
+                        floatingLabelStyle: TextStyle(
+                          color: Color(0xff4FAF30),
+                          fontSize: 24,
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xff4FAF30),
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        label: Text("نام کاربری"),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 46),
+              SizedBox(height: 35),
               Container(
                 width: 320,
-                height: 48,
+                height: 80,
                 child: Directionality(
                   textDirection: TextDirection.rtl,
-                  child: TextField(
-                    controller: textpassWord,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      label: Text("رمز عبور"),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
+                  child: Form(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    child: TextFormField(
+                      obscureText: isshow,
+                      controller: textpassWord,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xff4FAF30),
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                isshow = !isshow;
+                              });
+                            },
+                            icon: Icon(
+                              isshow == true
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Color(0xff4FAF30),
+                              size: 20,
+                            )),
+                        label: Text(
+                          "رمز عبور",
+                        ),
+                        floatingLabelStyle: TextStyle(
+                          color: Color(0xff4FAF30),
+                          fontSize: 24,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
                       ),
+                      validator: (value) {
+                        if (value != null && value.length < 8) {
+                          return ". تعداد کارکتر ها کمتر از 8 نویسه است  *";
+                        } else {
+                          return null;
+                        }
+                      },
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.fromLTRB(141, 0, 24, 0),
                 child: TextButton(
@@ -77,11 +129,11 @@ class _login_PageState extends State<login_Page> {
                   ),
                 ),
               ),
-              SizedBox(height: 170),
+              SizedBox(height: 120),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   primary: Color(0xff4FAF30),
-                  minimumSize: Size(312, 48),
+                  minimumSize: Size(312, 50),
                 ),
                 onPressed: () {},
                 child: Text(

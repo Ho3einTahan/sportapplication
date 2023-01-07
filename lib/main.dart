@@ -1,8 +1,16 @@
-
+import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:sport_application/About_Page.dart';
+import 'package:sport_application/Bmi_Page.dart';
+import 'package:sport_application/Complete_Page.dart';
+import 'package:sport_application/Day_Page.dart';
+import 'package:sport_application/Login_Page.dart';
+import 'package:sport_application/Rest_Page.dart';
+import 'package:sport_application/Sickness_Page2.dart';
+import 'package:sport_application/Sign_Up.dart';
 import 'package:sport_application/VideoPlayer_Page.dart';
 import 'package:sport_application/gender_Page.dart';
 import 'package:sport_application/model/data/appdata.dart';
@@ -16,7 +24,7 @@ void main() async {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: isview != true ? home() : VideoPlayer_Page(),
+      home: isview != true ? home() : gender_Page(),
     ),
   );
 }

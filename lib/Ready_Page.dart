@@ -147,7 +147,9 @@ class _Ready_PageState extends State<Ready_Page> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => VideoPlayer_Page(),
+              builder: (context) => VideoPlayer_Page(
+                  videoUrl:
+                      'https://static.vecteezy.com/system/resources/previews/008/954/618/mp4/leg-stretching-animation-footage-man-stretching-leg-for-daily-muscle-workout-4k-animation-young-boy-doing-rainbow-exercise-for-hip-muscles-and-good-health-animated-free-video.mp4'),
             ),
           );
         }

@@ -5,13 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:sport_application/Rest_Page.dart';
 import 'package:sport_application/setting/Menu_Page.dart';
 import 'package:video_player/video_player.dart';
 
 /// Stateful widget to fetch and then display video content.
 class VideoPlayer_Page extends StatefulWidget {
-  const VideoPlayer_Page({Key? key}) : super(key: key);
-
+  VideoPlayer_Page({Key? key, required this.videoUrl}) : super(key: key);
+  String videoUrl;
   @override
   _VideoPlayer_PageState createState() => _VideoPlayer_PageState();
 }
@@ -23,19 +24,24 @@ class _VideoPlayer_PageState extends State<VideoPlayer_Page> {
     color: Colors.white,
     size: 40.0,
   );
-  int? resultsecound;
+  int? resultsecound = 18;
   int a = 1;
-  int Secound = 15;
+  String? videoUrl;
+
   @override
   void initState() {
     super.initState();
+    videoUrl = widget.videoUrl;
     _controller = VideoPlayerController.network(
-        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4')
+      videoUrl!,
+    )
+      ..setLooping(true)
       ..setVolume(100)
+      ..play()
       ..initialize().then((_) {
         // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
         setState(() {});
-        resultsecound = _controller.value.duration.inSeconds.round();
+        // resultsecound = _controller.value.duration.inSeconds.round();
       });
   }
 
@@ -183,8 +189,16 @@ class _VideoPlayer_PageState extends State<VideoPlayer_Page> {
         setState(() {
           resultsecound = resultsecound! - 1;
         });
-      } else {
-        timer.cancel();
+      } else if (resultsecound == 0) {
+        setState(() {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) {
+              return Rest_Page();
+            }),
+          );
+          _controller.pause();
+          timer.cancel();
+        });
       }
     });
   }
