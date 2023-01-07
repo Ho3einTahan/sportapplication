@@ -6,6 +6,7 @@ class ResultExersice_Page extends StatefulWidget {
   ResultExersice_Page({super.key, this.result2 = ""});
 
   String result2 = "";
+// صفحه  نتیجه بی ام آی
 
   @override
   State<ResultExersice_Page> createState() => _ResultExersice_PageState();

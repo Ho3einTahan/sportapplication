@@ -5,6 +5,7 @@ import 'package:sport_application/setting/Menu_Page.dart';
 
 class Day_Page extends StatefulWidget {
   const Day_Page({super.key});
+// صفحه تعداد روز های دوره
 
   @override
   State<Day_Page> createState() => _Day_PageState();

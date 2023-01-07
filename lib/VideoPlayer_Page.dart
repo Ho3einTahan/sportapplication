@@ -8,7 +8,7 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:sport_application/Rest_Page.dart';
 import 'package:sport_application/setting/Menu_Page.dart';
 import 'package:video_player/video_player.dart';
-
+// صفحه پخش ویدیو
 /// Stateful widget to fetch and then display video content.
 class VideoPlayer_Page extends StatefulWidget {
   VideoPlayer_Page({Key? key, required this.videoUrl}) : super(key: key);

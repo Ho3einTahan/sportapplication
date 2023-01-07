@@ -5,6 +5,7 @@ import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class Sickness_Page extends StatefulWidget {
   const Sickness_Page({super.key});
+// صفحه  انتخاب بیماری
 
   @override
   State<Sickness_Page> createState() => _Sickness_PageState();

@@ -11,7 +11,7 @@ import 'package:video_player/video_player.dart';
 /// Stateful widget to fetch and then display video content.
 class Ready_Page extends StatefulWidget {
   const Ready_Page({Key? key}) : super(key: key);
-
+// صفحه آماده شدن قبل ورزش
   @override
   _Ready_PageState createState() => _Ready_PageState();
 }

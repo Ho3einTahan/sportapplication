@@ -3,6 +3,7 @@ import 'package:sport_application/Loading_Page.dart';
 
 class bmi_Page extends StatefulWidget {
   const bmi_Page({super.key});
+//Bmi صفحه دریافت 
 
   @override
   State<bmi_Page> createState() => _bmi_PageState();

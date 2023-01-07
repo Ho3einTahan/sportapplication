@@ -4,7 +4,7 @@ import 'package:video_player/video_player.dart';
 
 class exercise_Page extends StatefulWidget {
   const exercise_Page({super.key});
-
+// صفحه حرکات ورزشی
   @override
   State<exercise_Page> createState() => _exercise_PageState();
 }

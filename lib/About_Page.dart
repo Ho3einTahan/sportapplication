@@ -4,6 +4,7 @@ import 'package:sport_application/setting/about_Page.dart';
 
 class About_Page extends StatefulWidget {
   const About_Page({super.key});
+// صفحه در باره ما
 
   @override
   State<About_Page> createState() => _About_PageState();

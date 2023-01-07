@@ -7,6 +7,7 @@ class Complete_Page extends StatefulWidget {
   @override
   State<Complete_Page> createState() => _Complete_PageState();
 }
+// صفحه تمام شدن تمرینات یک روز
 
 class _Complete_PageState extends State<Complete_Page> {
   String? days;

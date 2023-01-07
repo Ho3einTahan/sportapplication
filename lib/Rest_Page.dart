@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -8,6 +7,7 @@ import 'package:sport_application/setting/Menu_Page.dart';
 
 class Rest_Page extends StatefulWidget {
   const Rest_Page({super.key});
+// صفحه استراحت بعد از ورزش
 
   @override
   State<Rest_Page> createState() => _Rest_PageState();
