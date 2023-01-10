@@ -5,12 +5,16 @@ import 'package:sport_application/VideoPlayer_Page.dart';
 import 'package:sport_application/gender_Page.dart';
 import 'package:sport_application/model/data/appdata.dart';
 import 'package:sport_application/setting/Menu_Page.dart';
+import 'package:sport_application/tools/MaterialData.dart';
+
+import 'login_Page.dart';
 
 void main() {
   runApp(
     MaterialApp(
+      theme: CTheme(),
       debugShowCheckedModeBanner: false,
-      home: (SamplePlayer()),
+      home: (login_Page()),
     ),
   );
 }
@@ -27,6 +31,7 @@ class _homeState extends State<home> {
   final image_Path = appDataBase().imagePath;
   final content_Page = appDataBase().contentPageView;
   int page = 0;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -72,8 +77,7 @@ class _homeState extends State<home> {
                                   Text(
                                     content_Page[index].contentPageView,
                                     style: TextStyle(
-                                      fontSize: 24,
-                                    ),
+                                        fontSize: 24, fontFamily: 'iranyekan'),
                                     textAlign: TextAlign.center,
                                   ),
                                 ],

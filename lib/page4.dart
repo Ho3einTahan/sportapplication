@@ -38,6 +38,7 @@ class _page4State extends State<page4> {
                   });
                 },
                 child: Container(
+                  margin: EdgeInsets.only(left: 20,right: 20),
                   decoration: BoxDecoration(
                     color: color1,
                     borderRadius: BorderRadius.circular(16),
@@ -47,7 +48,7 @@ class _page4State extends State<page4> {
                     ),
                   ),
                   height: 80,
-                  width: 312,
+                  width: MediaQuery.of(context).size.width,
                   child: ListTile(
                     contentPadding: EdgeInsets.all(10),
                     title: Text(
@@ -69,6 +70,7 @@ class _page4State extends State<page4> {
                   });
                 },
                 child: Container(
+                  margin: EdgeInsets.only(left: 20,right: 20),
                   decoration: BoxDecoration(
                     color: color2,
                     borderRadius: BorderRadius.circular(16),
@@ -78,7 +80,7 @@ class _page4State extends State<page4> {
                     ),
                   ),
                   height: 80,
-                  width: 312,
+                  width: MediaQuery.of(context).size.width,
                   child: ListTile(
                     contentPadding: EdgeInsets.all(10),
                     title: Text(
@@ -100,6 +102,7 @@ class _page4State extends State<page4> {
                   });
                 },
                 child: Container(
+                  margin: EdgeInsets.only(left: 20,right: 20),
                   decoration: BoxDecoration(
                     color: color3,
                     borderRadius: BorderRadius.circular(16),
@@ -109,7 +112,7 @@ class _page4State extends State<page4> {
                     ),
                   ),
                   height: 80,
-                  width: 312,
+                  width: MediaQuery.of(context).size.width,
                   child: ListTile(
                     contentPadding: EdgeInsets.all(10),
                     title: Text(
@@ -131,6 +134,7 @@ class _page4State extends State<page4> {
                   });
                 },
                 child: Container(
+                  margin: EdgeInsets.only(left: 20,right: 20),
                   decoration: BoxDecoration(
                     color: color4,
                     borderRadius: BorderRadius.circular(16),
@@ -140,7 +144,7 @@ class _page4State extends State<page4> {
                     ),
                   ),
                   height: 80,
-                  width: 312,
+                  width: MediaQuery.of(context).size.width,
                   child: ListTile(
                     contentPadding: EdgeInsets.all(10),
                     title: Text(
@@ -151,25 +155,28 @@ class _page4State extends State<page4> {
                 ),
               ),
               SizedBox(height: 60),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(312, 48),
-                    primary: Color.fromARGB(255, 63, 170, 101),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (BuildContext context) {
-                          return page5();
-                        },
-                      ),
-                    );
-                  },
-                  child: Text(
-                    "بعدی",
-                    style: TextStyle(fontSize: 20),
+              Container(
+                margin: EdgeInsets.only(left: 20,right: 20),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(MediaQuery.of(context).size.width, 48),
+                      primary: Color.fromARGB(255, 63, 170, 101),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return page5();
+                          },
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "بعدی",
+                      style: TextStyle(fontSize: 20),
+                    ),
                   ),
                 ),
               ),

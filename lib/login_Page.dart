@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sport_application/core/apis/Login.dart';
 
 class login_Page extends StatefulWidget {
   const login_Page({super.key});
@@ -12,6 +13,7 @@ class _login_PageState extends State<login_Page> {
   final TextEditingController textpassWord = TextEditingController();
   final TextEditingController textphoneNumber = TextEditingController();
   final TextEditingController textbirthDay = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +30,6 @@ class _login_PageState extends State<login_Page> {
                   ),
                 ),
               ),
-              SizedBox(height: 52),
               Container(
                 width: 320,
                 height: 48,
@@ -83,7 +84,11 @@ class _login_PageState extends State<login_Page> {
                   primary: Color(0xff4FAF30),
                   minimumSize: Size(312, 48),
                 ),
-                onPressed: () {},
+                onPressed: () async {
+                  await Authentication().login(textuserName.text.toString(),
+                      textpassWord.text.toString());
+                  print("ok");
+                },
                 child: Text(
                   "ورود",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
