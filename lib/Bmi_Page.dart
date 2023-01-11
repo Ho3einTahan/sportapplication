@@ -3,6 +3,7 @@ import 'package:sport_application/Loading_Page.dart';
 
 class bmi_Page extends StatefulWidget {
   const bmi_Page({super.key});
+//Bmi صفحه دریافت 
 
   @override
   State<bmi_Page> createState() => _bmi_PageState();
@@ -32,7 +33,7 @@ class _bmi_PageState extends State<bmi_Page> {
             Padding(
               padding: EdgeInsets.fromLTRB(270, 0, 0, 0),
               child: Text(
-                "${height.round().toString()}:قد",
+                "${height.round().toString()} :قد",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
@@ -57,7 +58,7 @@ class _bmi_PageState extends State<bmi_Page> {
             Padding(
               padding: EdgeInsets.fromLTRB(270, 0, 0, 0),
               child: Text(
-                "${weight.round().toString()}:وزن",
+                "${weight.round().toString()} :وزن",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
@@ -67,6 +68,7 @@ class _bmi_PageState extends State<bmi_Page> {
             SizedBox(height: 15),
             Slider(
               value: weight,
+              divisions: 20,
               min: 40,
               max: 180,
               activeColor: Color(0xff4FAF30),
@@ -78,7 +80,7 @@ class _bmi_PageState extends State<bmi_Page> {
                 });
               },
             ),
-            SizedBox(height: 340),
+            SizedBox(height: 320),
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: ElevatedButton(

@@ -1,6 +1,16 @@
+import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:sport_application/About_Page.dart';
+import 'package:sport_application/Bmi_Page.dart';
+import 'package:sport_application/Complete_Page.dart';
+import 'package:sport_application/Day_Page.dart';
+import 'package:sport_application/Login_Page.dart';
+import 'package:sport_application/Rest_Page.dart';
+import 'package:sport_application/Sickness_Page2.dart';
+import 'package:sport_application/Sign_Up.dart';
 import 'package:sport_application/VideoPlayer_Page.dart';
 import 'package:sport_application/gender_Page.dart';
 import 'package:sport_application/model/data/appdata.dart';
@@ -9,12 +19,16 @@ import 'package:sport_application/tools/MaterialData.dart';
 
 import 'login_Page.dart';
 
-void main() {
+void main() async {
+  bool? isview = false;
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  isview = await sharedPreferences.getBool("isviewonboarding");
   runApp(
     MaterialApp(
       theme: CTheme(),
       debugShowCheckedModeBanner: false,
-      home: (login_Page()),
+      home: isview != true ? home() : gender_Page(),
     ),
   );
 }
@@ -46,6 +60,11 @@ class _homeState extends State<home> {
   }
 
   @override
+  OnboardingInfo() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.setBool("isviewonboarding", true);
+  }
+
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -110,20 +129,21 @@ class _homeState extends State<home> {
                         minimumSize: Size(56, 56),
                         primary: Color(0xff4FAF30),
                       ),
-                      onPressed: () {
-                        setState(() {
-                          if (page == image_Path.length - 1) {
+                      onPressed: () async {
+                        if (page == image_Path.length - 1) {
+                          await OnboardingInfo();
+                          setState(() {
                             Navigator.of(context).push(
                               MaterialPageRoute(builder: (contex) {
                                 return MyApp();
                               }),
                             );
-                          } else {
-                            pageController.animateToPage(page + 1,
-                                duration: Duration(milliseconds: 500),
-                                curve: Curves.decelerate);
-                          }
-                        });
+                          });
+                        } else {
+                          pageController.animateToPage(page + 1,
+                              duration: Duration(milliseconds: 500),
+                              curve: Curves.decelerate);
+                        }
                       },
                       child: Icon(
                         page == image_Path.length - 1

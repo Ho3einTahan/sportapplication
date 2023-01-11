@@ -1,8 +1,7 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:multi_dropdown/multiselect_dropdown.dart';
-import 'package:sport_application/page3.dart';
+import 'package:sport_application/Sickness_Page2.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class slider extends StatefulWidget {
