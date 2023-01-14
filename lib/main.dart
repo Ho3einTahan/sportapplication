@@ -7,7 +7,6 @@ import 'package:sport_application/About_Page.dart';
 import 'package:sport_application/Bmi_Page.dart';
 import 'package:sport_application/Complete_Page.dart';
 import 'package:sport_application/Day_Page.dart';
-import 'package:sport_application/Login_Page.dart';
 import 'package:sport_application/Rest_Page.dart';
 import 'package:sport_application/Sickness_Page2.dart';
 import 'package:sport_application/Sign_Up.dart';
@@ -24,11 +23,12 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
   isview = await sharedPreferences.getBool("isviewonboarding");
+  print(isview);
   runApp(
     MaterialApp(
       theme: CTheme(),
       debugShowCheckedModeBanner: false,
-      home: isview != true ? home() : gender_Page(),
+      home: isview != true ? home() : login_Page(),
     ),
   );
 }

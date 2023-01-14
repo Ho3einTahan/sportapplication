@@ -1,8 +1,12 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
+import 'package:sport_application/Sign_Up.dart';
 import 'package:sport_application/core/apis/Login.dart';
+import 'package:sport_application/gender_Page.dart';
 
 class login_Page extends StatefulWidget {
   login_Page({super.key});
+
 // صفحه ورود کاربر
 
   @override
@@ -16,6 +20,7 @@ class _login_PageState extends State<login_Page> {
   final TextEditingController textbirthDay = TextEditingController();
 
   bool isshow = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -139,9 +144,33 @@ class _login_PageState extends State<login_Page> {
                   minimumSize: Size(312, 50),
                 ),
                 onPressed: () async {
-                  await Authentication().login(textuserName.text.toString(),
+                  final login = await Authentication().login(
+                      textuserName.text.toString(),
                       textpassWord.text.toString());
+                  print(login);
+                  final snackBar = SnackBar(
+                    elevation: 0,
+                    behavior: SnackBarBehavior.floating,
+                    backgroundColor: Colors.transparent,
+                    content: login ? AwesomeSnackbarContent(
+                      title: 'موفقیت آمیز!',
+                      message: 'شما با موفقیت وارد شدید!',
+                      contentType: ContentType.success,
+                    ) : AwesomeSnackbarContent(
+                      title: 'خطا!',
+                      message: 'نام کاربری شما یا رمز عبورتان اشتباه است!',
+                      contentType: ContentType.failure,
+                    ),
+                  );
+                  ScaffoldMessenger.of(context)
+                    ..hideCurrentSnackBar()
+                    ..showSnackBar(snackBar);
                   print("ok");
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (contex) {
+                      return gender_Page();
+                    }),
+                  );
                 },
                 child: Text(
                   "ورود",
@@ -160,7 +189,13 @@ class _login_PageState extends State<login_Page> {
                     ),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (contex) {
+                      return signUp_Page();
+                    }),
+                  );
+                },
                 child: Text(
                   "ثبت نام",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),

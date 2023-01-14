@@ -25,6 +25,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   internet_connection_checker: ^1.0.0+1
   shared_preferences: ^2.0.15
+  get: ^4.6.5
+  awesome_snackbar_content: ^0.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
