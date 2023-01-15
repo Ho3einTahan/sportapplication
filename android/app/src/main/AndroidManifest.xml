@@ -3,7 +3,7 @@
     package="com.example.sport_application">
     
    <application
-        android:label="sport_application"
+        android:label="دیجی من"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

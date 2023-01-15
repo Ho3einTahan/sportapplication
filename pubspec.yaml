@@ -27,6 +27,7 @@ dependencies:
   shared_preferences: ^2.0.15
   get: ^4.6.5
   awesome_snackbar_content: ^0.1.0
+  persian_datetime_picker: ^2.5.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

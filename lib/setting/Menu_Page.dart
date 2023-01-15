@@ -8,6 +8,7 @@ import 'package:sport_application/gender_Page.dart';
 
 import 'package:sport_application/Sickness_Page.dart';
 import 'package:sport_application/setting/about_Page.dart';
+import 'package:sport_application/sign_Up_Page.dart';
 // صفحه منو
 
 class Menu_Page extends StatefulWidget {
@@ -108,6 +109,8 @@ class _Menu_PageState extends State<Menu_Page> {
                   return bmi_Page();
                 } else if (menuItem.title == "درباره ما") {
                   return About_Page();
+                } else if (menuItem.title == "ثبت نام") {
+                  return signUp_Page();
                 }
                 return bmi_Page();
               }),
@@ -209,6 +212,11 @@ List dataList = [
     "level": 1,
     "icon": FontAwesomeIcons.circleInfo,
     "title": "درباره ما",
+  },
+  {
+    "level": 1,
+    "icon": FontAwesomeIcons.signIn,
+    "title": "ثبت نام",
   },
 
   //menu data item

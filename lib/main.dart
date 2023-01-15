@@ -1,22 +1,14 @@
-import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:sport_application/About_Page.dart';
-import 'package:sport_application/Bmi_Page.dart';
-import 'package:sport_application/Complete_Page.dart';
-import 'package:sport_application/Day_Page.dart';
-import 'package:sport_application/Rest_Page.dart';
-import 'package:sport_application/Sickness_Page2.dart';
-import 'package:sport_application/Sign_Up.dart';
-import 'package:sport_application/VideoPlayer_Page.dart';
+import 'package:sport_application/Accept_Page.dart';
 import 'package:sport_application/gender_Page.dart';
+import 'package:sport_application/login_Page.dart';
 import 'package:sport_application/model/data/appdata.dart';
 import 'package:sport_application/setting/Menu_Page.dart';
+import 'package:sport_application/sign_Up_Page.dart';
 import 'package:sport_application/tools/MaterialData.dart';
-
-import 'login_Page.dart';
 
 void main() async {
   bool? isview = false;
@@ -28,7 +20,7 @@ void main() async {
     MaterialApp(
       theme: CTheme(),
       debugShowCheckedModeBanner: false,
-      home: isview != true ? home() : login_Page(),
+      home: isview != true ? home() : gender_Page(),
     ),
   );
 }
@@ -48,7 +40,6 @@ class _homeState extends State<home> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     pageController.addListener(() {
       if (pageController.page!.round() != page) {
@@ -69,87 +60,108 @@ class _homeState extends State<home> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Container(
-          width: MediaQuery.of(context).size.width,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+        body: SafeArea(
+          child: Stack(
             children: [
-              Container(
-                child: Expanded(
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsets.fromLTRB(0, 200, 0, 0),
-                          child: PageView.builder(
-                            controller: pageController,
-                            itemCount: image_Path.length,
-                            itemBuilder: ((context, index) {
-                              return Column(
-                                children: [
-                                  Image.asset(
-                                    "${image_Path[index].imagePath}",
-                                    width: 179,
-                                    height: 179,
-                                  ),
-                                  SizedBox(height: 100),
-                                  Text(
-                                    content_Page[index].contentPageView,
-                                    style: TextStyle(
-                                        fontSize: 24, fontFamily: 'iranyekan'),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ],
-                              );
-                            }),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+              Positioned(
+                left: 0,
+                child: Image.asset("images/eclipsleft.png"),
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(30, 0, 0, 50),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    SmoothPageIndicator(
-                      controller: pageController,
-                      count: content_Page.length,
-                      effect: ExpandingDotsEffect(
-                        activeDotColor: Color(0xff4FAF30),
-                        dotColor: Color(0xffD9D9D9),
-                        dotWidth: 8,
-                        dotHeight: 8,
+                    Container(
+                      child: Expanded(
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsets.fromLTRB(0, 200, 0, 0),
+                                child: Stack(
+                                  children: [
+                                    Positioned(
+                                      right: -10,
+                                      child:
+                                          Image.asset("images/eclipsright.png"),
+                                    ),
+                                    PageView.builder(
+                                      controller: pageController,
+                                      itemCount: image_Path.length,
+                                      itemBuilder: ((context, index) {
+                                        return Column(
+                                          children: [
+                                            Image.asset(
+                                              "${image_Path[index].imagePath}",
+                                              width: 179,
+                                              height: 179,
+                                            ),
+                                            SizedBox(height: 100),
+                                            Text(
+                                              content_Page[index]
+                                                  .contentPageView,
+                                              style: TextStyle(
+                                                  fontSize: 24,
+                                                  fontFamily: 'iranyekan'),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ],
+                                        );
+                                      }),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: Size(56, 56),
-                        primary: Color(0xff4FAF30),
-                      ),
-                      onPressed: () async {
-                        if (page == image_Path.length - 1) {
-                          await OnboardingInfo();
-                          setState(() {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(builder: (contex) {
-                                return MyApp();
-                              }),
-                            );
-                          });
-                        } else {
-                          pageController.animateToPage(page + 1,
-                              duration: Duration(milliseconds: 500),
-                              curve: Curves.decelerate);
-                        }
-                      },
-                      child: Icon(
-                        page == image_Path.length - 1
-                            ? CupertinoIcons.check_mark
-                            : CupertinoIcons.arrow_right,
-                        size: 23,
+                    Container(
+                      padding: EdgeInsets.fromLTRB(30, 0, 0, 50),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          SmoothPageIndicator(
+                            controller: pageController,
+                            count: content_Page.length,
+                            effect: ExpandingDotsEffect(
+                              activeDotColor: Color(0xff4FAF30),
+                              dotColor: Color(0xffD9D9D9),
+                              dotWidth: 8,
+                              dotHeight: 8,
+                            ),
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: Size(56, 56),
+                              primary: Color(0xff4FAF30),
+                            ),
+                            onPressed: () async {
+                              if (page == image_Path.length - 1) {
+                                await OnboardingInfo();
+                                setState(() {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(builder: (contex) {
+                                      return MyApp();
+                                    }),
+                                  );
+                                });
+                              } else {
+                                pageController.animateToPage(page + 1,
+                                    duration: Duration(milliseconds: 500),
+                                    curve: Curves.decelerate);
+                              }
+                            },
+                            child: Icon(
+                              page == image_Path.length - 1
+                                  ? CupertinoIcons.check_mark
+                                  : CupertinoIcons.arrow_right,
+                              size: 23,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -174,10 +186,6 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      endDrawer: Drawer(
-        child: Menu_Page(title: "title"),
-      ),
       backgroundColor: Colors.white,
       body: gender_Page(),
     );

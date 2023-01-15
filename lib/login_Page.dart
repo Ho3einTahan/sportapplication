@@ -1,12 +1,9 @@
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
-import 'package:sport_application/Sign_Up.dart';
 import 'package:sport_application/core/apis/Login.dart';
-import 'package:sport_application/gender_Page.dart';
+import 'package:sport_application/sign_Up_Page.dart';
 
 class login_Page extends StatefulWidget {
   login_Page({super.key});
-
 // صفحه ورود کاربر
 
   @override
@@ -20,7 +17,6 @@ class _login_PageState extends State<login_Page> {
   final TextEditingController textbirthDay = TextEditingController();
 
   bool isshow = true;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,14 +26,13 @@ class _login_PageState extends State<login_Page> {
             children: [
               Center(
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(158, 133, 158, 0),
+                  padding: EdgeInsets.symmetric(vertical: 40),
                   child: Text(
                     "ورود",
                     style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
                   ),
                 ),
               ),
-              SizedBox(height: 50),
               Container(
                 width: 320,
                 height: 80,
@@ -68,7 +63,7 @@ class _login_PageState extends State<login_Page> {
                   ),
                 ),
               ),
-              SizedBox(height: 35),
+              SizedBox(height: 32),
               Container(
                 width: 320,
                 height: 80,
@@ -137,40 +132,16 @@ class _login_PageState extends State<login_Page> {
                   ),
                 ),
               ),
-              SizedBox(height: 120),
+              SizedBox(height: 55),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   primary: Color(0xff4FAF30),
                   minimumSize: Size(312, 50),
                 ),
                 onPressed: () async {
-                  final login = await Authentication().login(
-                      textuserName.text.toString(),
+                  await Authentication().login(textuserName.text.toString(),
                       textpassWord.text.toString());
-                  print(login);
-                  final snackBar = SnackBar(
-                    elevation: 0,
-                    behavior: SnackBarBehavior.floating,
-                    backgroundColor: Colors.transparent,
-                    content: login ? AwesomeSnackbarContent(
-                      title: 'موفقیت آمیز!',
-                      message: 'شما با موفقیت وارد شدید!',
-                      contentType: ContentType.success,
-                    ) : AwesomeSnackbarContent(
-                      title: 'خطا!',
-                      message: 'نام کاربری شما یا رمز عبورتان اشتباه است!',
-                      contentType: ContentType.failure,
-                    ),
-                  );
-                  ScaffoldMessenger.of(context)
-                    ..hideCurrentSnackBar()
-                    ..showSnackBar(snackBar);
                   print("ok");
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (contex) {
-                      return gender_Page();
-                    }),
-                  );
                 },
                 child: Text(
                   "ورود",
@@ -190,8 +161,8 @@ class _login_PageState extends State<login_Page> {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (contex) {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) {
                       return signUp_Page();
                     }),
                   );

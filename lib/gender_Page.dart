@@ -43,104 +43,153 @@ class _gender_PageState extends State<gender_Page> {
             height: 67,
           ),
           Center(
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 44.5,
+            child: Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isvisible = true;
+                          opacity = 0.9;
+                          if (scale < 1.3) {
+                            scale += 0.3;
+                            opacity1 = 0.1;
+                            if (scale == 1.3) {
+                              scal1 = 1;
+                            }
+                            visible = true;
+                            visible1 = false;
+                          }
+                        });
+                      },
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          AnimatedOpacity(
+                            opacity: opacity,
+                            duration: Duration(milliseconds: 200),
+                            child: AnimatedScale(
+                              scale: scale,
+                              duration: Duration(milliseconds: 200),
+                              child: Image.asset("images/man.png",
+                                  width: 92, height: 346),
+                            ),
+                          ),
+                          AnimatedOpacity(
+                            opacity: 0.9,
+                            duration: Duration(milliseconds: 200),
+                            child: Visibility(
+                              visible: visible,
+                              child: Padding(
+                                padding: const EdgeInsets.only(bottom: 80),
+                                child: Image.asset("images/blue.png",
+                                    height: 190, width: 190),
+                              ),
+                            ),
+                          ),
+                          AnimatedOpacity(
+                            opacity: opacity,
+                            duration: Duration(milliseconds: 200),
+                            child: AnimatedScale(
+                              scale: scale,
+                              duration: Duration(milliseconds: 200),
+                              child: Image.asset("images/man.png",
+                                  width: 92, height: 346),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: 25,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isvisible = true;
+                          opacity1 = 0.9;
+                          if (scal1 < 1.3) {
+                            scal1 += 0.3;
+                            opacity = 0.1;
+                            if (scal1 == 1.3) {
+                              scale = 1;
+                            }
+                            visible = false;
+                            visible1 = true;
+                          }
+                        });
+                      },
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Visibility(
+                            visible: visible1,
+                            child: Padding(
+                              padding: const EdgeInsets.only(bottom: 50),
+                              child: Transform(
+                                transform: new Matrix4.identity()
+                                  ..rotateZ(8 * 3.1415927 / 180),
+                                child: Image.asset("images/pink.png",
+                                    width: 180, height: 180),
+                              ),
+                            ),
+                          ),
+                          AnimatedOpacity(
+                            opacity: opacity1,
+                            duration: Duration(milliseconds: 300),
+                            child: AnimatedScale(
+                              scale: scal1,
+                              duration: Duration(milliseconds: 300),
+                              child: Image.asset("images/woman.png",
+                                  width: 151, height: 331),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      isvisible = true;
-                      opacity = 0.9;
-                      if (scale < 1.3) {
-                        scale += 0.3;
-                        opacity1 = 0.1;
-                        if (scale == 1.3) {
-                          scal1 = 1;
-                        }
-                        visible = true;
-                        visible1 = false;
-                      }
-                    });
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Visibility(
-                        visible: visible,
-                        child: Image.asset("images/blue.png",
-                            height: 130, width: 130),
-                      ),
-                      AnimatedOpacity(
-                        opacity: opacity,
-                        duration: Duration(milliseconds: 200),
-                        child: AnimatedScale(
-                          scale: scale,
-                          duration: Duration(milliseconds: 300),
-                          child: Image.asset("images/man.png",
-                              width: 120, height: 278),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      isvisible = true;
-                      opacity1 = 0.9;
-                      if (scal1 < 1.3) {
-                        scal1 += 0.3;
-                        opacity = 0.1;
-                        if (scal1 == 1.3) {
-                          scale = 1;
-                        }
-                        visible = false;
-                        visible1 = true;
-                      }
-                    });
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Visibility(
-                        visible: visible1,
-                        child: Image.asset("images/pink.png",
-                            width: 130, height: 130),
-                      ),
-                      AnimatedOpacity(
-                        opacity: opacity1,
-                        duration: Duration(milliseconds: 300),
-                        child: AnimatedScale(
-                          scale: scal1,
-                          duration: Duration(milliseconds: 300),
-                          child: Image.asset("images/woman.png",
-                              width: 156, height: 278),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 38),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              SizedBox(width: 95),
-              Text(
-                "مرد",
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+              Container(
+                width: 200,
+                child: Center(
+                  child: AnimatedOpacity(
+                    duration: Duration(milliseconds: 100),
+                    opacity: opacity,
+                    child: Text(
+                      "مرد",
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                ),
               ),
-              SizedBox(width: 115),
-              Text(
-                "زن",
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+              SizedBox(width: 145),
+              AnimatedOpacity(
+                opacity: opacity1,
+                duration: Duration(milliseconds: 100),
+                child: AnimatedScale(
+                  duration: Duration(milliseconds: 100),
+                  scale: scal1,
+                  child: Text(
+                    "زن",
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+                  ),
+                ),
               ),
+              SizedBox(width: 50),
             ],
           ),
-          SizedBox(height: 180),
+          SizedBox(height: 136),
           Visibility(
             visible: isvisible,
             child: ClipRRect(

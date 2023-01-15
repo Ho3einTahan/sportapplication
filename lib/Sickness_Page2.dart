@@ -63,12 +63,12 @@ class _Sickness_Page2State extends State<Sickness_Page2> {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                       ),
                       decoration: BoxDecoration(
-                        color: Color(0xff3B9B1C),
+                        color: Color(0xffF2F2F2),
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
@@ -82,12 +82,12 @@ class _Sickness_Page2State extends State<Sickness_Page2> {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                       ),
                       decoration: BoxDecoration(
-                        color: Color(0xff3B9B1C),
+                        color: Color(0xffF2F2F2),
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
@@ -101,12 +101,12 @@ class _Sickness_Page2State extends State<Sickness_Page2> {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                       ),
                       decoration: BoxDecoration(
-                        color: Color(0xff3B9B1C),
+                        color: Color(0xffF2F2F2),
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
@@ -120,12 +120,12 @@ class _Sickness_Page2State extends State<Sickness_Page2> {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                       ),
                       decoration: BoxDecoration(
-                        color: Color(0xff3B9B1C),
+                        color: Color(0xffF2F2F2),
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),

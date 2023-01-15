@@ -4,8 +4,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sport_application/Login_Page.dart';
 import 'package:sport_application/core/apis/Login.dart';
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
+import 'package:persian_datetime_picker/persian_datetime_picker.dart';
+
 class signUp_Page extends StatefulWidget {
-  const signUp_Page({super.key});
+  signUp_Page({super.key});
 
 // صفحه فرم ثبت نام
 
@@ -19,7 +21,6 @@ class _signUp_PageState extends State<signUp_Page> {
   final TextEditingController textEmail = TextEditingController();
   final TextEditingController textbirthDay = TextEditingController();
   bool isshow = true;
-
   @override
   void initState() {
     // TODO: implement initState
@@ -32,15 +33,6 @@ class _signUp_PageState extends State<signUp_Page> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(140, 100, 140, 0),
-                child: Center(
-                  child: Text(
-                    "ثبت نام",
-                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
-                  ),
-                ),
-              ),
               SizedBox(height: 50),
               Container(
                 width: 320,
@@ -137,7 +129,7 @@ class _signUp_PageState extends State<signUp_Page> {
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     child: TextFormField(
                       controller: textEmail,
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -175,9 +167,10 @@ class _signUp_PageState extends State<signUp_Page> {
                 child: Directionality(
                   textDirection: TextDirection.rtl,
                   child: TextField(
-                    keyboardType: TextInputType.datetime,
+                    keyboardType: TextInputType.none,
                     controller: textbirthDay,
                     decoration: InputDecoration(
+                      // icon: Icon(Icons.date_range_outlined),
                       floatingLabelStyle: TextStyle(
                         color: Color(0xff4FAF30),
                         fontSize: 24,
@@ -194,6 +187,17 @@ class _signUp_PageState extends State<signUp_Page> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
+                    onTap: () async {
+                      Jalali? pickedDateTime = await showPersianDatePicker(
+                        context: context,
+                        initialDate: Jalali.now(),
+                        firstDate: Jalali(1385, 8),
+                        lastDate: Jalali(1450, 9),
+                      );
+                      if (pickedDateTime != null) {
+                        textbirthDay.text = pickedDateTime.formatCompactDate();
+                      }
+                    },
                   ),
                 ),
               ),
@@ -222,8 +226,7 @@ class _signUp_PageState extends State<signUp_Page> {
                           )
                         : AwesomeSnackbarContent(
                             title: 'خطا!',
-                            message:
-                                'نام کاربری شما یا ایمیل شما وجود دارد!',
+                            message: 'نام کاربری شما یا ایمیل شما وجود دارد!',
                             contentType: ContentType.failure,
                           ),
                   );
