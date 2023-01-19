@@ -14,16 +14,16 @@ import 'package:sport_application/model/data/appdata.dart';
 import 'package:sport_application/tools/MaterialData.dart';
 
 void main() async {
-  bool? isview = false;
+  bool? isLogin = false;
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  isview = await sharedPreferences.getBool("isviewonboarding");
-  print(isview);
+  isLogin = await sharedPreferences.getBool("login");
+  print(isLogin);
   runApp(
     MaterialApp(
       theme: CTheme(),
       debugShowCheckedModeBanner: false,
-      home: isview != true ? home() : BodyLevel_Page(),
+      home: isLogin == true ? home() : login_Page(),
     ),
   );
 }
@@ -56,7 +56,7 @@ class _homeState extends State<home> {
   @override
   OnboardingInfo() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.setBool("isviewonboarding", true);
+    sharedPreferences.setBool("login", true);
   }
 
   Widget build(BuildContext context) {
