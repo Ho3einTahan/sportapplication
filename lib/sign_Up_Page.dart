@@ -178,7 +178,7 @@ class _signUp_PageState extends State<signUp_Page> {
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               label: Text(
-                                "شماره موبایل یا ایمیل",
+                                "شماره موبایل",
                               ),
                               floatingLabelStyle: TextStyle(
                                 color: Color(0xff4FAF30),

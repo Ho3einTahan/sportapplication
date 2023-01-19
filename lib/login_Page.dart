@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sport_application/core/apis/Login.dart';
+import 'package:sport_application/gender_Page.dart';
 import 'package:sport_application/sign_Up_Page.dart';
 
 class login_Page extends StatefulWidget {
@@ -182,7 +183,12 @@ class _login_PageState extends State<login_Page> {
                             await Authentication().login(
                                 textuserName.text.toString(),
                                 textpassWord.text.toString());
-                            print("ok");
+                              print("ok");
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(builder: (context) {
+                                return gender_Page();
+                              }),
+                            );
                           },
                           child: Text(
                             "ورود",

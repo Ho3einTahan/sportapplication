@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sport_application/Accept_Page.dart';
 import 'package:sport_application/Target_Page.dart';
 import 'package:sport_application/top_level_Appbar.dart';
@@ -247,6 +248,11 @@ class getBoxSickness extends StatefulWidget {
 }
 
 class _getBoxSicknessState extends State<getBoxSickness> {
+  getsickness(String sickness) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.setString("sickness", sickness);
+  }
+
   Color bordercolor = Color(0xffF2F2F2);
   @override
   Widget build(BuildContext context) {
@@ -256,11 +262,10 @@ class _getBoxSicknessState extends State<getBoxSickness> {
         alignment: Alignment.topRight,
         children: [
           InkWell(
-            onTap: () {
+            onTap: () async {
               if (widget.visibtly == false &&
                   bordercolor == Color(0xffF2F2F2)) {
                 setState(() {
-                  Accept_Page(textSickness: widget.text);
                   widget.visibtly = true;
                   bordercolor = Color(0xff4FAF30);
                 });

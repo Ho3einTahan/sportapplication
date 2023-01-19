@@ -24,7 +24,9 @@ class _topLevelAppbarState extends State<topLevelAppbar> {
               ),
               padding: EdgeInsets.zero,
               color: Color(0xff379237),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
               icon: Icon(CupertinoIcons.back),
             ),
             Text(

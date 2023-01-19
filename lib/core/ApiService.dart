@@ -16,7 +16,7 @@ class ApiService {
 
   Future req_post(url, params) async {
     return http
-        .post(Uri.parse("${this.base_url}$url"), body: params)
+        .post(Uri.parse("${this.base_url}$url"),body:params)
         .timeout(Duration(seconds: this.timeout));
   }
 }

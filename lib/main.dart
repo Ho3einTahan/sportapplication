@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:sport_application/Bmi_Page.dart';
 import 'package:sport_application/BodyLevel_Page.dart';
+import 'package:sport_application/Day_Page.dart';
 import 'package:sport_application/Loading_Page.dart';
 import 'package:sport_application/Sickness_Page.dart';
 import 'package:sport_application/Target_Page.dart';
@@ -11,19 +12,20 @@ import 'package:sport_application/Verification_code_Page.dart';
 import 'package:sport_application/gender_Page.dart';
 import 'package:sport_application/login_Page.dart';
 import 'package:sport_application/model/data/appdata.dart';
+import 'package:sport_application/sign_Up_Page.dart';
 import 'package:sport_application/tools/MaterialData.dart';
 
 void main() async {
   bool? isview = false;
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  isview = await sharedPreferences.getBool("isviewonboarding");
+  isview = await sharedPreferences.getBool("login");
   print(isview);
   runApp(
     MaterialApp(
       theme: CTheme(),
       debugShowCheckedModeBanner: false,
-      home: isview != true ? home() : BodyLevel_Page(),
+      home: Day_Page(),
     ),
   );
 }

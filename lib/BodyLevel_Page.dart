@@ -44,9 +44,9 @@ class _BodyLevel_PageState extends State<BodyLevel_Page> {
               ),
             ),
             SizedBox(height: 60),
-            getBox(text: "کم", visibtly: false),
+            getBox(text: "     کم", visibtly: false),
             getBox(text: "متوسط", visibtly: false),
-            getBox(text: "زیاد", visibtly: false),
+            getBox(text: "  زیاد", visibtly: false),
             SizedBox(height: 210),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 24),
@@ -129,7 +129,7 @@ class _getBoxState extends State<getBox> {
                   color: Color(0xffF2F2F2),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 185),
+                  padding: const EdgeInsets.only(left: 200),
                   child: Center(
                       child: Text(
                     widget.text!,

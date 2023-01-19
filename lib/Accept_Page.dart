@@ -1,23 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sport_application/top_level_Appbar.dart';
 
 class Accept_Page extends StatefulWidget {
-  Accept_Page(
-      {super.key,
-      this.textgender,
-      this.textSickness,
-      this.textskeletalProblem,
-      this.textTarget,
-      this.textBodyLevel,
-      this.textheight,
-      this.textWeight});
-  final String? textgender;
-  final String? textSickness;
-  final String? textskeletalProblem;
-  final String? textTarget;
-  final String? textBodyLevel;
-  final String? textheight;
-  final String? textWeight;
+  Accept_Page({
+    super.key,
+  });
+
   @override
   State<Accept_Page> createState() => _Accept_PageState();
 }
@@ -26,8 +15,26 @@ TextStyle style_right = TextStyle(
     fontSize: 16, fontWeight: FontWeight.w500, fontFamily: "iranyekan");
 TextStyle style_Left = TextStyle(
     fontSize: 14, fontWeight: FontWeight.w400, fontFamily: "iranyekan");
+String? gender;
+String? sickness;
+getgender() async {
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  gender = sharedPreferences.getString("gender");
+}
+
+getsickness() async {
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  sharedPreferences.getString("sickness");
+}
 
 class _Accept_PageState extends State<Accept_Page> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getgender();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

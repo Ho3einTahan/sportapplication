@@ -7,6 +7,7 @@ import 'package:sport_application/core/apis/models/SignUpData.dart';
 import 'models/LoginData.dart';
 
 class Authentication {
+  
   ApiService apiService = new ApiService();
   JwtService jwtService = new JwtService();
   SpService spService = new SpService();
