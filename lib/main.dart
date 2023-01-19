@@ -2,12 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:sport_application/Accept_Page.dart';
+import 'package:sport_application/Bmi_Page.dart';
+import 'package:sport_application/BodyLevel_Page.dart';
+import 'package:sport_application/Loading_Page.dart';
+import 'package:sport_application/Sickness_Page.dart';
+import 'package:sport_application/Target_Page.dart';
+import 'package:sport_application/Verification_code_Page.dart';
 import 'package:sport_application/gender_Page.dart';
 import 'package:sport_application/login_Page.dart';
 import 'package:sport_application/model/data/appdata.dart';
-import 'package:sport_application/setting/Menu_Page.dart';
-import 'package:sport_application/sign_Up_Page.dart';
 import 'package:sport_application/tools/MaterialData.dart';
 
 void main() async {
@@ -20,7 +23,7 @@ void main() async {
     MaterialApp(
       theme: CTheme(),
       debugShowCheckedModeBanner: false,
-      home: isview != true ? home() : gender_Page(),
+      home: isview != true ? home() : BodyLevel_Page(),
     ),
   );
 }

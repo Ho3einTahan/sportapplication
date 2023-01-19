@@ -1,8 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:sport_application/top_level_Appbar.dart';
 
 class Accept_Page extends StatefulWidget {
-  const Accept_Page({super.key});
-
+  Accept_Page(
+      {super.key,
+      this.textgender,
+      this.textSickness,
+      this.textskeletalProblem,
+      this.textTarget,
+      this.textBodyLevel,
+      this.textheight,
+      this.textWeight});
+  final String? textgender;
+  final String? textSickness;
+  final String? textskeletalProblem;
+  final String? textTarget;
+  final String? textBodyLevel;
+  final String? textheight;
+  final String? textWeight;
   @override
   State<Accept_Page> createState() => _Accept_PageState();
 }
@@ -19,141 +34,143 @@ class _Accept_PageState extends State<Accept_Page> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SafeArea(
-          child: Column(
-            children: [
-              SizedBox(height: 32),
-              Text(
-                "تایید نهایی",
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(":جنسیت",
-                        textAlign: TextAlign.right, style: style_right),
-                    Text(":جنسیت",
-                        textAlign: TextAlign.left,
-                        style: style_Left), //////////
-                  ],
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(":بیماری ها",
-                        textAlign: TextAlign.right, style: style_right),
-                    Text(":بیماری ها",
-                        textAlign: TextAlign.left,
-                        style: style_Left), ////////////
-                  ],
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(":مشکلات اسکلتی",
-                        textAlign: TextAlign.right, style: style_right),
-                    Text(":مشکلات اسکلتی",
-                        textAlign: TextAlign.left, style: style_Left), /////////
-                  ],
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(":انگیزه ها",
-                        textAlign: TextAlign.right, style: style_right),
-                    Text(":انگیزه ها",
-                        textAlign: TextAlign.left,
-                        style: style_Left), ///////////
-                  ],
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(":میزان آمادگی بدنی",
-                        textAlign: TextAlign.right, style: style_right),
-                    Text(":میزان آمادگی بدنی",
-                        textAlign: TextAlign.left,
-                        style: style_Left), //////////
-                  ],
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(":قد", textAlign: TextAlign.right, style: style_right),
-                    Text(":قد",
-                        textAlign: TextAlign.left, style: style_Left), ////////
-                  ],
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(":وزن",
-                        textAlign: TextAlign.right, style: style_right),
-                    Text(":وزن",
-                        textAlign: TextAlign.left, style: style_Left), //
-                  ],
-                ),
-              ),
-              SizedBox(height: 190),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xff4FAF30),
-                  minimumSize: Size(312, 48),
-                ),
-                onPressed: () {},
-                child: Text(
-                  "تایید نهایی",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-                ),
-              ),
-              SizedBox(height: 24),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  minimumSize: Size(312, 48),
-                  foregroundColor: Color(0xff4FAF30),
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                      color: Color(0xff4FAF30),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                topLevelAppbar(),
+                Padding(
+                  padding: const EdgeInsets.only(top: 30),
+                  child: Text(
+                    "تایید نهایی",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ),
-                onPressed: () {},
-                child: Text(
-                  "ویرایش",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("", textAlign: TextAlign.right, style: style_right),
+                      Text(":جنسیت",
+                          textAlign: TextAlign.left,
+                          style: style_Left), //////////
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("", textAlign: TextAlign.right, style: style_right),
+                      Text(":بیماری ها",
+                          textAlign: TextAlign.left,
+                          style: style_Left), ////////////
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("", textAlign: TextAlign.right, style: style_right),
+                      Text(":مشکلات اسکلتی",
+                          textAlign: TextAlign.left,
+                          style: style_Left), /////////
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("", textAlign: TextAlign.right, style: style_right),
+                      Text(":انگیزه ها",
+                          textAlign: TextAlign.left,
+                          style: style_Left), ///////////
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("", textAlign: TextAlign.right, style: style_right),
+                      Text(":میزان آمادگی بدنی",
+                          textAlign: TextAlign.left,
+                          style: style_Left), //////////
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("", textAlign: TextAlign.right, style: style_right),
+                      Text(":قد",
+                          textAlign: TextAlign.left,
+                          style: style_Left), ////////
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("", textAlign: TextAlign.right, style: style_right),
+                      Text(":وزن",
+                          textAlign: TextAlign.left, style: style_Left), //
+                    ],
+                  ),
+                ),
+                SizedBox(height: 145),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xff4FAF30),
+                    minimumSize: Size(312, 48),
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    "تایید نهایی",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+                  ),
+                ),
+                SizedBox(height: 24),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    minimumSize: Size(312, 48),
+                    foregroundColor: Color(0xff4FAF30),
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        color: Color(0xff4FAF30),
+                      ),
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    "ویرایش",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+                  ),
+                ),
+                SizedBox(height: 24),
+              ],
+            ),
           ),
         ),
       ),

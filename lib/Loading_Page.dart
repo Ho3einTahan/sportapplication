@@ -43,27 +43,24 @@ class _loading_PageState extends State<loading_Page> {
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(height: 24),
-            StepProgressIndicator(
-              totalSteps: 7,
-              padding: 4,
-              selectedColor: Color(0xff4FAF30),
-              unselectedColor: Color.fromARGB(255, 217, 217, 217),
-              currentStep: 7,
-              direction: Axis.horizontal,
-              size: 5.5,
-              roundedEdges: Radius.circular(10),
-            ),
-            SizedBox(height: 40),
             Center(
               child: Padding(
                 padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
                 child: Text(
-                  "درحال ایجاد بهترین برنامه برای شما",
+                  "درحال ایجاد بهترین برنامه برای",
                   style: TextStyle(
                     fontSize: 20,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w700,
                   ),
+                ),
+              ),
+            ),
+            Center(
+              child: Text(
+                "شما هستیم",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
             ),

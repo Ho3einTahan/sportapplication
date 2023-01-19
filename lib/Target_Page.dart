@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:sport_application/BodyLevel_Page.dart';
+import 'package:sport_application/top_level_Appbar.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
-class Target_Page extends StatefulWidget {
-  const Target_Page({super.key});
-// صفحه نظر سنجی
+import 'Sickness_Page.dart';
 
+class Target_Page extends StatefulWidget {
+   Target_Page({super.key, this.textgender, this.textSickness, this.textskeletalProblem, this.textTarget, this.textBodyLevel, this.textheight, this.textWeight});
+// صفحه نظر سنجی
+ final String? textgender;
+ final String? textSickness;
+ final String? textskeletalProblem;
+ final String? textTarget;
+ final String? textBodyLevel;
+ final String? textheight;
+ final String? textWeight;
   @override
   State<Target_Page> createState() => _Target_PageState();
 }
 
 class _Target_PageState extends State<Target_Page> {
-  Color color1 = Color.fromARGB(255, 226, 226, 226);
-  Color color2 = Color.fromARGB(255, 226, 226, 226);
-  Color color3 = Color.fromARGB(255, 226, 226, 226);
-  Color color4 = Color.fromARGB(255, 226, 226, 226);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,162 +28,28 @@ class _Target_PageState extends State<Target_Page> {
         body: SafeArea(
           child: Column(
             children: [
+              topLevelAppbar(),
               Padding(
-                padding: const EdgeInsets.only(top: 16),
-                child: StepProgressIndicator(
-                  totalSteps: 7,
-                  padding: 4,
-                  selectedColor: Color(0xff4FAF30),
-                  unselectedColor: Color.fromARGB(255, 217, 217, 217),
-                  currentStep: 4,
-                  direction: Axis.horizontal,
-                  size: 5.5,
-                  roundedEdges: Radius.circular(20),
-                ),
-              ),
-              SizedBox(height: 30),
-              Center(
-                child: Text(
-                  "مهم ترین انگیزه شما چیست ؟",
-                  style: TextStyle(fontSize: 22),
-                ),
-              ),
-              SizedBox(height: 30),
-              InkWell(
-                onTap: () {
-                  setState(() {
-                    if (color1 == Color.fromARGB(255, 226, 226, 226)) {
-                      color1 = Color.fromARGB(255, 63, 170, 101);
-                    } else {
-                      color1 = Color.fromARGB(255, 226, 226, 226);
-                    }
-                  });
-                },
-                child: Container(
-                  margin: EdgeInsets.only(left: 20,right: 20),
-                  decoration: BoxDecoration(
-                    color: color1,
-                    borderRadius: BorderRadius.circular(16),
-                    image: DecorationImage(
-                      alignment: Alignment.bottomLeft,
-                      image: AssetImage("images/metr.png"),
-                    ),
-                  ),
-                  height: 80,
-                  width: MediaQuery.of(context).size.width,
-                  child: ListTile(
-                    contentPadding: EdgeInsets.all(10),
-                    title: Text(
-                      "کاهش وزن",
-                      textAlign: TextAlign.right,
-                    ),
+                padding: const EdgeInsets.symmetric(vertical: 30),
+                child: Center(
+                  child: Text(
+                    "مهم ترین انگیزه ات چیه؟",
+                    style: TextStyle(fontSize: 22),
                   ),
                 ),
               ),
-              SizedBox(height: 16),
-              InkWell(
-                onTap: () {
-                  setState(() {
-                    if (color2 == Color.fromARGB(255, 226, 226, 226)) {
-                      color2 = Color.fromARGB(255, 63, 170, 101);
-                    } else {
-                      color2 = Color.fromARGB(255, 226, 226, 226);
-                    }
-                  });
-                },
-                child: Container(
-                  margin: EdgeInsets.only(left: 20,right: 20),
-                  decoration: BoxDecoration(
-                    color: color2,
-                    borderRadius: BorderRadius.circular(16),
-                    image: DecorationImage(
-                      alignment: Alignment.bottomLeft,
-                      image: AssetImage("images/body.png"),
-                    ),
-                  ),
-                  height: 80,
-                  width: MediaQuery.of(context).size.width,
-                  child: ListTile(
-                    contentPadding: EdgeInsets.all(10),
-                    title: Text(
-                      "عضله سازی",
-                      textAlign: TextAlign.right,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: 16),
-              InkWell(
-                onTap: () {
-                  setState(() {
-                    if (color3 == Color.fromARGB(255, 226, 226, 226)) {
-                      color3 = Color.fromARGB(255, 63, 170, 101);
-                    } else {
-                      color3 = Color.fromARGB(255, 226, 226, 226);
-                    }
-                  });
-                },
-                child: Container(
-                  margin: EdgeInsets.only(left: 20,right: 20),
-                  decoration: BoxDecoration(
-                    color: color3,
-                    borderRadius: BorderRadius.circular(16),
-                    image: DecorationImage(
-                      alignment: Alignment.bottomLeft,
-                      image: AssetImage("images/kamar.png"),
-                    ),
-                  ),
-                  height: 80,
-                  width: MediaQuery.of(context).size.width,
-                  child: ListTile(
-                    contentPadding: EdgeInsets.all(10),
-                    title: Text(
-                      "اصلاح فرم بدن",
-                      textAlign: TextAlign.right,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: 16),
-              InkWell(
-                onTap: () {
-                  setState(() {
-                    if (color4 == Color.fromARGB(255, 226, 226, 226)) {
-                      color4 = Color.fromARGB(255, 63, 170, 101);
-                    } else {
-                      color4 = Color.fromARGB(255, 226, 226, 226);
-                    }
-                  });
-                },
-                child: Container(
-                  margin: EdgeInsets.only(left: 20,right: 20),
-                  decoration: BoxDecoration(
-                    color: color4,
-                    borderRadius: BorderRadius.circular(16),
-                    image: DecorationImage(
-                      alignment: Alignment.bottomLeft,
-                      image: AssetImage("images/fruite.png"),
-                    ),
-                  ),
-                  height: 80,
-                  width: MediaQuery.of(context).size.width,
-                  child: ListTile(
-                    contentPadding: EdgeInsets.all(10),
-                    title: Text(
-                      "تغذیه سالم",
-                      textAlign: TextAlign.right,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: 200),
-              Container(
-                margin: EdgeInsets.only(left: 20,right: 20),
+              getBox(text: "تغذیه سالم", visibtly: false, Tracking: 1),
+              getBox(text: "کاهش وزن", visibtly: false, Tracking: 2),
+              getBox(text: "عضله سازی", visibtly: false, Tracking: 3),
+              getBox(text: "اصلاح فرم بدن", visibtly: false, Tracking: 4),
+              SizedBox(height: 100),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(MediaQuery.of(context).size.width, 48),
+                      minimumSize: Size(312, 48),
                       primary: Color(0xff4FAF30),
                     ),
                     onPressed: () {
@@ -192,14 +63,95 @@ class _Target_PageState extends State<Target_Page> {
                     },
                     child: Text(
                       "بعدی",
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
                   ),
                 ),
               ),
+              SizedBox(height: 24),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class getBox extends StatefulWidget {
+  getBox({super.key, this.text, this.visibtly, this.Tracking});
+  String? text;
+  int? Tracking;
+  bool? visibtly;
+
+  @override
+  State<getBox> createState() => _getBoxState();
+}
+
+class _getBoxState extends State<getBox> {
+  bool enable = false;
+  Color bordercolor = Color(0xffF2F2F2);
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 8, left: 24, right: 24, bottom: 16),
+      child: Stack(
+        alignment: Alignment.topRight,
+        children: [
+          AbsorbPointer(
+            absorbing: enable,
+            child: InkWell(
+              onTap: () {
+                if (widget.Tracking == 1 || widget.Tracking == 2) {
+                  setState(() {
+                    enable = true;
+                  });
+                  if (widget.visibtly == false &&
+                      bordercolor == Color(0xffF2F2F2)) {
+                    setState(() {
+                      widget.visibtly = true;
+                      bordercolor = Color(0xff4FAF30);
+                    });
+                  } else {
+                    setState(() {
+                      widget.visibtly = false;
+                      bordercolor = Color(0xffF2F2F2);
+                    });
+                  }
+                }
+              },
+              child: Container(
+                width: 312,
+                height: 80,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 1.5,
+                    color: bordercolor,
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                  color: Color(0xffF2F2F2),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 185),
+                  child: Center(
+                      child: Text(
+                    widget.text!,
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  )),
+                ),
+              ),
+            ),
+          ),
+          FractionalTranslation(
+            translation: Offset(0.5, -0.5),
+            child: Visibility(
+                visible: widget.visibtly!,
+                child: Image.asset("images/tick1.png", width: 22, height: 22)),
+          ),
+        ],
       ),
     );
   }

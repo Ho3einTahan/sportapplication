@@ -17,6 +17,8 @@ class _gender_PageState extends State<gender_Page> {
   bool isvisible = false;
   bool visible = false;
   bool visible1 = false;
+  Color bottonColor = Color(0xffE3E3E3);
+  Color textBottonColor = Color(0xff9E9E9E);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,17 +26,21 @@ class _gender_PageState extends State<gender_Page> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          StepProgressIndicator(
-            totalSteps: 7,
-            padding: 4,
-            selectedColor: Color(0xff4FAF30),
-            unselectedColor: Color.fromARGB(255, 217, 217, 217),
-            currentStep: 1,
-            direction: Axis.horizontal,
-            size: 5.5,
-            roundedEdges: Radius.circular(20),
+          SizedBox(height: 20),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30),
+            child: StepProgressIndicator(
+              totalSteps: 6,
+              padding: 4,
+              selectedColor: Color(0xff4FAF30),
+              unselectedColor: Color.fromARGB(255, 217, 217, 217),
+              currentStep: 1,
+              direction: Axis.horizontal,
+              size: 5.5,
+              roundedEdges: Radius.circular(20),
+            ),
           ),
-          SizedBox(height: 32),
+          SizedBox(height: 62),
           Text(
             "جنسیت خود را انتخاب کنید",
             style: TextStyle(fontSize: 22),
@@ -52,6 +58,8 @@ class _gender_PageState extends State<gender_Page> {
                     GestureDetector(
                       onTap: () {
                         setState(() {
+                          bottonColor = Color(0xff4FAF30);
+                          textBottonColor = Colors.white;
                           isvisible = true;
                           opacity = 0.9;
                           if (scale < 1.3) {
@@ -75,7 +83,7 @@ class _gender_PageState extends State<gender_Page> {
                               scale: scale,
                               duration: Duration(milliseconds: 200),
                               child: Image.asset("images/man.png",
-                                  width: 92, height: 346),
+                                  width: 120, height: 346),
                             ),
                           ),
                           AnimatedOpacity(
@@ -97,7 +105,7 @@ class _gender_PageState extends State<gender_Page> {
                               scale: scale,
                               duration: Duration(milliseconds: 200),
                               child: Image.asset("images/man.png",
-                                  width: 92, height: 346),
+                                  width: 120, height: 346),
                             ),
                           ),
                         ],
@@ -109,6 +117,8 @@ class _gender_PageState extends State<gender_Page> {
                     GestureDetector(
                       onTap: () {
                         setState(() {
+                          bottonColor = Color(0xff4FAF30);
+                          textBottonColor = Colors.white;
                           isvisible = true;
                           opacity1 = 0.9;
                           if (scal1 < 1.3) {
@@ -155,49 +165,54 @@ class _gender_PageState extends State<gender_Page> {
               ),
             ),
           ),
-          SizedBox(height: 38),
+          SizedBox(height: 70),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                width: 200,
-                child: Center(
+              Padding(
+                padding: EdgeInsets.only(left: 80),
+                child: AnimatedScale(
+                  duration: Duration(milliseconds: 100),
+                  scale: scale,
                   child: AnimatedOpacity(
                     duration: Duration(milliseconds: 100),
                     opacity: opacity,
                     child: Text(
                       "مرد",
+                      textAlign: TextAlign.right,
                       style:
-                          TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
                     ),
                   ),
                 ),
               ),
-              SizedBox(width: 145),
               AnimatedOpacity(
                 opacity: opacity1,
                 duration: Duration(milliseconds: 100),
                 child: AnimatedScale(
                   duration: Duration(milliseconds: 100),
                   scale: scal1,
-                  child: Text(
-                    "زن",
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+                  child: Padding(
+                    padding: EdgeInsets.only(right: 100),
+                    child: Text(
+                      "زن",
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+                    ),
                   ),
                 ),
               ),
-              SizedBox(width: 50),
             ],
           ),
-          SizedBox(height: 136),
-          Visibility(
-            visible: isvisible,
+          SizedBox(height: 60),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(312, 48),
-                  primary: Color(0xff4FAF30),
+                  primary: bottonColor,
                 ),
                 onPressed: () {
                   Navigator.of(context).push(
@@ -210,7 +225,7 @@ class _gender_PageState extends State<gender_Page> {
                 },
                 child: Text(
                   "بعدی",
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 20, color: textBottonColor),
                 ),
               ),
             ),
