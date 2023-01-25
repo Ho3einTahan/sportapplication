@@ -100,13 +100,13 @@ class _bmi_PageState extends State<bmi_Page> {
                   primary: Color(0xff4FAF30),
                 ),
                 onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (BuildContext context) {
-                        return Accept_Page();
-                      },
-                    ),
-                  );
+                  // Navigator.of(context).push(
+                  //   MaterialPageRoute(
+                  //     builder: (BuildContext context) {
+                  //       return Accept_Page();
+                  //     },
+                  //   ),
+                  // );
                 },
                 child: Text(
                   "بعدی",

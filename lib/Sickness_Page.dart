@@ -1,20 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sport_application/Accept_Page.dart';
 import 'package:sport_application/Target_Page.dart';
 import 'package:sport_application/top_level_Appbar.dart';
-import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class Sickness_Page extends StatefulWidget {
-  Sickness_Page({super.key});
+  Sickness_Page({super.key, this.userData});
+  Map<String, dynamic>? userData;
 // صفحه  انتخاب بیماری
-
+  // Map<String, dynamic>? userData;
   @override
   State<Sickness_Page> createState() => _Sickness_PageState();
 }
 
 class _Sickness_PageState extends State<Sickness_Page> {
+  String username="d";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,9 +23,9 @@ class _Sickness_PageState extends State<Sickness_Page> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                topLevelAppbar(),
+                topLevelAppbar(position: 1),
                 const SizedBox(
-                  height: 32,
+                  height: 16,
                 ),
                 Text(
                   "دچار چه عارضه یا بیماری هستی؟ ",
@@ -37,13 +35,13 @@ class _Sickness_PageState extends State<Sickness_Page> {
                   ),
                 ),
                 SizedBox(
-                  height: 27,
+                  height: 16,
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 185),
                   child: getTitleSickness("بیماری های عمومی"),
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 5),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
@@ -51,15 +49,17 @@ class _Sickness_PageState extends State<Sickness_Page> {
                       Padding(
                         padding: EdgeInsets.only(left: 276, right: 32),
                         child: getBoxSickness(
-                            text: "یبوست", size: 71, visibtly: false),
+                            text: "یبوست",
+                            size: 71,
+                            visibtly: false,
+                            userData: {}),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 16,
-                ),
+                SizedBox(height: 5),
                 getdivider(),
+                SizedBox(height: 8),
                 Padding(
                   padding: EdgeInsets.only(left: 205),
                   child: getTitleSickness("بیماری های غدد"),
@@ -73,28 +73,35 @@ class _Sickness_PageState extends State<Sickness_Page> {
                       children: [
                         SizedBox(width: 27),
                         getBoxSickness(
-                            text: "دیابت نوع 1", size: 78, visibtly: false),
+                            text: "دیابت نوع 1",
+                            size: 78,
+                            visibtly: false,
+                            userData: {}),
                         SizedBox(width: 16),
                         getBoxSickness(
-                            text: "دیابت نوع 2", size: 101, visibtly: false),
+                            text: "دیابت نوع 2",
+                            size: 101,
+                            visibtly: false,
+                            userData: {}),
                         SizedBox(width: 16),
                         getBoxSickness(
                             text: "کم کاری تیروئید",
                             size: 101,
-                            visibtly: false),
+                            visibtly: false,
+                            userData: {}),
                         SizedBox(width: 16),
                       ],
                     ),
                   ),
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 5),
                 getdivider(),
-                SizedBox(height: 16),
+                SizedBox(height: 8),
                 Padding(
                   padding: EdgeInsets.only(left: 181),
                   child: getTitleSickness("بیماری های گوارشی"),
                 ),
-                //   SizedBox(height: 16),
+
                 Padding(
                   padding: EdgeInsets.only(left: 40, right: 40),
                   child: SingleChildScrollView(
@@ -103,29 +110,40 @@ class _Sickness_PageState extends State<Sickness_Page> {
                       children: [
                         SizedBox(width: 27),
                         getBoxSickness(
-                            text: "یبوست", size: 71, visibtly: false),
+                            text: "یبوست",
+                            size: 71,
+                            visibtly: false,
+                            userData: {}),
                         SizedBox(width: 16),
                         getBoxSickness(
-                            text: "ریفلاکس معده", size: 71, visibtly: false),
+                            text: "ریفلاکس معده",
+                            size: 71,
+                            visibtly: false,
+                            userData: {}),
                         SizedBox(width: 16),
                         getBoxSickness(
-                            text: "عفونت معده", size: 71, visibtly: false),
+                            text: "عفونت معده",
+                            size: 71,
+                            visibtly: false,
+                            userData: {}),
                         SizedBox(width: 16),
                         getBoxSickness(
-                            text: "عفونت", size: 46, visibtly: false),
+                            text: "عفونت",
+                            size: 46,
+                            visibtly: false,
+                            userData: {}),
                         SizedBox(width: 16),
                       ],
                     ),
                   ),
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 5),
                 getdivider(),
-                SizedBox(height: 16),
+                SizedBox(height: 8),
                 Padding(
                   padding: EdgeInsets.only(left: 113),
                   child: getTitleSickness("بیماری های استخوان و مفصل"),
                 ),
-                // SizedBox(height: 16),
                 Padding(
                   padding: EdgeInsets.only(left: 40, right: 40),
                   child: SingleChildScrollView(
@@ -134,28 +152,40 @@ class _Sickness_PageState extends State<Sickness_Page> {
                       children: [
                         SizedBox(width: 27),
                         getBoxSickness(
-                            text: "دیسک کمر", size: 71, visibtly: false),
+                            text: "دیسک کمر",
+                            size: 71,
+                            visibtly: false,
+                            userData: {}),
                         SizedBox(width: 16),
                         getBoxSickness(
-                            text: "دیسک کمر", size: 71, visibtly: false),
+                            text: "دیسک کمر",
+                            size: 71,
+                            visibtly: false,
+                            userData: {}),
                         SizedBox(width: 16),
                         getBoxSickness(
-                            text: "دیسک کمر", size: 71, visibtly: false),
+                            text: "دیسک کمر",
+                            size: 71,
+                            visibtly: false,
+                            userData: {}),
                         SizedBox(width: 16),
                         getBoxSickness(
-                            text: "آرتروز", size: 46, visibtly: false),
+                            text: "آرتروز",
+                            size: 46,
+                            visibtly: false,
+                            userData: {}),
                         SizedBox(width: 16),
                       ],
                     ),
                   ),
                 ),
+                SizedBox(height: 5),
                 getdivider(),
-                SizedBox(height: 16),
+                SizedBox(height: 8),
                 Padding(
                   padding: EdgeInsets.only(left: 154),
                   child: getTitleSickness("بیماری های قلبی عروقی"),
                 ),
-                //  SizedBox(height: 18),
                 Padding(
                   padding: EdgeInsets.only(left: 40, right: 40),
                   child: SingleChildScrollView(
@@ -163,25 +193,40 @@ class _Sickness_PageState extends State<Sickness_Page> {
                     child: Row(
                       children: [
                         getBoxSickness(
-                            text: "دیسک کمر", size: 71, visibtly: false),
+                            text: "دیسک کمر",
+                            size: 71,
+                            visibtly: false,
+                            userData: {}),
                         SizedBox(width: 16),
                         getBoxSickness(
-                            text: "دیسک کمر", size: 71, visibtly: false),
+                            text: "دیسک کمر",
+                            size: 71,
+                            visibtly: false,
+                            userData: {}),
                         SizedBox(width: 16),
                         getBoxSickness(
-                            text: "دیسک کمر", size: 71, visibtly: false),
+                            text: "دیسک کمر",
+                            size: 71,
+                            visibtly: false,
+                            userData: {}),
                         SizedBox(width: 16),
                         getBoxSickness(
-                            text: "آرتروز", size: 46, visibtly: false),
+                            text: "آرتروز",
+                            size: 46,
+                            visibtly: false,
+                            userData: {}),
                         SizedBox(width: 16),
                         getBoxSickness(
-                            text: "آرتروز", size: 46, visibtly: false),
+                            text: "آرتروز",
+                            size: 46,
+                            visibtly: false,
+                            userData: {}),
                         SizedBox(width: 16),
                       ],
                     ),
                   ),
                 ),
-                SizedBox(height: 60),
+                SizedBox(height: 50),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24),
                   child: ClipRRect(
@@ -195,7 +240,7 @@ class _Sickness_PageState extends State<Sickness_Page> {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (BuildContext context) {
-                              return Target_Page();
+                              return Target_Page(userData: widget.userData);
                             },
                           ),
                         );
@@ -238,21 +283,17 @@ class _Sickness_PageState extends State<Sickness_Page> {
 }
 
 class getBoxSickness extends StatefulWidget {
-  getBoxSickness({super.key, this.text, this.size, this.visibtly});
+  getBoxSickness(
+      {super.key, this.text, this.size, this.visibtly, required this.userData});
   String? text;
   double? size;
   bool? visibtly;
-
+  Map<String, dynamic>? userData;
   @override
   State<getBoxSickness> createState() => _getBoxSicknessState();
 }
 
 class _getBoxSicknessState extends State<getBoxSickness> {
-  getsickness(String sickness) async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.setString("sickness", sickness);
-  }
-
   Color bordercolor = Color(0xffF2F2F2);
   @override
   Widget build(BuildContext context) {
@@ -266,8 +307,13 @@ class _getBoxSicknessState extends State<getBoxSickness> {
               if (widget.visibtly == false &&
                   bordercolor == Color(0xffF2F2F2)) {
                 setState(() {
+                  widget.userData!["sickness"] = widget.text;
                   widget.visibtly = true;
                   bordercolor = Color(0xff4FAF30);
+                  // Sickness_Page(userData: widget.userData);
+                
+                  Sickness_Page(userData: widget.userData).userData =
+                      widget.userData;
                 });
               } else {
                 setState(() {
@@ -315,4 +361,8 @@ class _getBoxSicknessState extends State<getBoxSickness> {
       ),
     );
   }
+}
+
+senddata(Map<String, dynamic>? userData122, String userData) {
+  userData122!["sickness"] = userData;
 }

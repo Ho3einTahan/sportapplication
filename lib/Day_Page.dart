@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sport_application/Exercise_Page.dart';
 import 'package:sport_application/About_Page.dart';
+import 'package:sport_application/model/data/Day_Data.dart';
 import 'package:sport_application/setting/Menu_Page.dart';
 
 class Day_Page extends StatefulWidget {
@@ -15,6 +16,7 @@ class _Day_PageState extends State<Day_Page> {
   bool visibitly = false;
   int number = 1;
   int _value = 0;
+  List<bool> isvisibtly = [false, false, false, false, false, false, false];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,252 +42,94 @@ class _Day_PageState extends State<Day_Page> {
           ),
         ),
         body: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(height: 16),
-                topBox(),
-                progressBar(),
-                SizedBox(height: 32),
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => exercise_Page(),
+          child: CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                child: Column(
+                  children: [
+                    SizedBox(height: 16),
+                    topBox(),
+                    progressBar(),
+                    SizedBox(height: 32),
+                  ],
+                ),
+              ),
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  childCount: getDay_Data().day.length,
+                  (context, index) {
+                    final day = getDay_Data().day[index].day;
+                    return InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => exercise_Page(),
+                          ),
+                        );
+                      },
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                        child: Container(
+                          height: 90,
+                          width: 312,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 16),
+                                child: InkWell(
+                                  onTap: () {
+                                    if (isvisibtly[index] == false) {
+                                      setState(() {
+                                        isvisibtly[index] = true;
+                                      });
+                                    } else {
+                                      setState(() {
+                                        isvisibtly[index] = false;
+                                      });
+                                    }
+                                  },
+                                  child: Container(
+                                    width: 30,
+                                    height: 30,
+                                    child: isvisibtly[index] == true
+                                        ? Image.asset("images/tick1.png")
+                                        : null,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(16),
+                                      border: Border.all(
+                                        width: 2,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  day,
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 226, 226, 226),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
                       ),
                     );
                   },
-                  child: Container(
-                    height: 85,
-                    width: 312,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: InkWell(
-                            onTap: () {
-                              setState(() {
-                                visibitly = true;
-                              });
-                            },
-                            child: Container(
-                              width: 30,
-                              height: 30,
-                              child: Visibility(
-                                visible: visibitly,
-                                child: Image.asset("images/tick1.png"),
-                              ),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16),
-                                border: Border.all(
-                                  width: 2,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "روز اول",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 226, 226, 226),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
                 ),
-                SizedBox(height: 16),
-                Container(
-                  height: 85,
-                  width: 312,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Transform.scale(
-                        scale: 1.5,
-                        child: Radio(
-                            activeColor: Color(0xff4FAF30),
-                            value: 2,
-                            groupValue: _value,
-                            onChanged: (int? value) {
-                              setState(() {
-                                _value = value!;
-                              });
-                            }),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "روز دوم",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 226, 226, 226),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                SizedBox(height: 16),
-                Container(
-                  height: 85,
-                  width: 312,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Transform.scale(
-                        scale: 1.5,
-                        child: Radio(
-                            activeColor: Color(0xff4FAF30),
-                            value: 3,
-                            groupValue: _value,
-                            onChanged: (int? value) {
-                              setState(() {
-                                _value = value!;
-                              });
-                            }),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "روز سوم",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 226, 226, 226),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                SizedBox(height: 16),
-                Container(
-                  height: 85,
-                  width: 312,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Transform.scale(
-                        scale: 1.5,
-                        child: Radio(
-                            activeColor: Color(0xff4FAF30),
-                            value: 4,
-                            groupValue: _value,
-                            onChanged: (int? value) {
-                              setState(() {
-                                _value = value!;
-                              });
-                            }),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "روز چهارم",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 226, 226, 226),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                SizedBox(height: 16),
-                Container(
-                  height: 85,
-                  width: 312,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Transform.scale(
-                        scale: 1.5,
-                        child: Radio(
-                            activeColor: Color(0xff4FAF30),
-                            value: 5,
-                            groupValue: _value,
-                            onChanged: (int? value) {
-                              setState(() {
-                                _value = value!;
-                              });
-                            }),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "روز پنجم",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 226, 226, 226),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                SizedBox(height: 16),
-                Container(
-                  height: 85,
-                  width: 312,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Transform.scale(
-                        scale: 1.5,
-                        child: Radio(
-                            activeColor: Color(0xff4FAF30),
-                            value: 6,
-                            groupValue: _value,
-                            onChanged: (int? value) {
-                              setState(() {
-                                _value = value!;
-                              });
-                            }),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          "روز ششم",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 226, 226, 226),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
+            physics: BouncingScrollPhysics(),
           ),
         ),
       ),

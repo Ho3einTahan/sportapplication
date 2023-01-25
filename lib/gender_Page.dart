@@ -1,6 +1,9 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:sport_application/Sickness_Page.dart';
+import 'package:sport_application/Target_Page.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class gender_Page extends StatefulWidget {
@@ -11,20 +14,25 @@ class gender_Page extends StatefulWidget {
 }
 
 class _gender_PageState extends State<gender_Page> {
-  double scale = 1;
-  double scal1 = 1;
-  double opacity = 0.9;
-  double opacity1 = 0.9;
+  double ManScale = 1;
+  double WomanScale = 1;
+  double ManOpacity = 0.9;
+  double WomanOpacity = 0.9;
   bool isvisible = false;
-  bool visible = false;
-  bool visible1 = false;
-  getgender(String gender) async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.setString("gender", gender);
-  }
-
+  bool visibleMan = false;
+  bool visibleWoman = false;
+  String textWoman = "زن";
+  String textMan = "مرد";
+  int? clickManOrWoman;
   @override
   Widget build(BuildContext context) {
+    Map<String, dynamic> userData = {
+      "gender": null,
+      "sickness": null,
+      "target": null,
+      "bodylevel": null,
+      "bmi": null
+    };
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -33,20 +41,22 @@ class _gender_PageState extends State<gender_Page> {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 50),
-              child: StepProgressIndicator(
-                totalSteps: 7,
-                padding: 4,
-                selectedColor: Color(0xff4FAF30),
-                unselectedColor: Color.fromARGB(255, 217, 217, 217),
-                currentStep: 1,
-                direction: Axis.horizontal,
-                size: 5.5,
-                roundedEdges: Radius.circular(20),
+              child: DotsIndicator(
+                dotsCount: 7,
+                position: 0,
+                decorator: DotsDecorator(
+                  activeColor: Color(0xff4FAF30),
+                  color: Color.fromARGB(200, 176, 176, 176),
+                  size: const Size.square(12.0),
+                  activeSize: const Size(25.0, 12.0),
+                  activeShape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0)),
+                ),
               ),
             ),
             SizedBox(height: 32),
             Text(
-              "جنسیت خود را انتخاب کنید",
+              "جنسیت خودتو انتخاب کن",
               style: TextStyle(fontSize: 22),
             ),
             SizedBox(
@@ -61,16 +71,17 @@ class _gender_PageState extends State<gender_Page> {
                   InkWell(
                     onTap: () async {
                       setState(() {
+                        clickManOrWoman = 0;
                         isvisible = true;
-                        opacity = 0.9;
-                        if (scale < 1.3) {
-                          scale += 0.3;
-                          opacity1 = 0.1;
-                          if (scale == 1.3) {
-                            scal1 = 1;
+                        ManOpacity = 0.9;
+                        if (ManScale < 1.3) {
+                          ManScale += 0.3;
+                          WomanOpacity = 0.1;
+                          if (ManScale == 1.3) {
+                            WomanScale = 1;
                           }
-                          visible = true;
-                          visible1 = false;
+                          visibleMan = true;
+                          visibleWoman = false;
                         }
                       });
                     },
@@ -78,10 +89,10 @@ class _gender_PageState extends State<gender_Page> {
                       alignment: Alignment.center,
                       children: [
                         AnimatedOpacity(
-                          opacity: opacity,
+                          opacity: ManOpacity,
                           duration: Duration(milliseconds: 200),
                           child: AnimatedScale(
-                            scale: scale,
+                            scale: ManScale,
                             duration: Duration(milliseconds: 300),
                             child: Image.asset("images/man.png",
                                 width: 120, height: 278),
@@ -90,16 +101,16 @@ class _gender_PageState extends State<gender_Page> {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 70),
                           child: Visibility(
-                            visible: visible,
+                            visible: visibleMan,
                             child: Image.asset("images/blue.png",
                                 height: 130, width: 130),
                           ),
                         ),
                         AnimatedOpacity(
-                          opacity: opacity,
+                          opacity: ManOpacity,
                           duration: Duration(milliseconds: 200),
                           child: AnimatedScale(
-                            scale: scale,
+                            scale: ManScale,
                             duration: Duration(milliseconds: 300),
                             child: Image.asset("images/man.png",
                                 width: 120, height: 278),
@@ -111,16 +122,18 @@ class _gender_PageState extends State<gender_Page> {
                   InkWell(
                     onTap: () async {
                       setState(() {
+                        clickManOrWoman = 1;
+
                         isvisible = true;
-                        opacity1 = 0.9;
-                        if (scal1 < 1.3) {
-                          scal1 += 0.3;
-                          opacity = 0.1;
-                          if (scal1 == 1.3) {
-                            scale = 1;
+                        WomanOpacity = 0.9;
+                        if (WomanScale < 1.3) {
+                          WomanScale += 0.3;
+                          ManOpacity = 0.1;
+                          if (WomanScale == 1.3) {
+                            ManScale = 1;
                           }
-                          visible = false;
-                          visible1 = true;
+                          visibleMan = false;
+                          visibleWoman = true;
                         }
                       });
                     },
@@ -128,10 +141,10 @@ class _gender_PageState extends State<gender_Page> {
                       alignment: Alignment.center,
                       children: [
                         AnimatedOpacity(
-                          opacity: opacity1,
+                          opacity: WomanOpacity,
                           duration: Duration(milliseconds: 300),
                           child: AnimatedScale(
-                            scale: scal1,
+                            scale: WomanScale,
                             duration: Duration(milliseconds: 300),
                             child: Image.asset("images/woman.png",
                                 width: 156, height: 278),
@@ -140,16 +153,16 @@ class _gender_PageState extends State<gender_Page> {
                         Padding(
                           padding: const EdgeInsets.only(right: 10, bottom: 20),
                           child: Visibility(
-                            visible: visible1,
+                            visible: visibleWoman,
                             child: Image.asset("images/pink.png",
                                 width: 130, height: 130),
                           ),
                         ),
                         AnimatedOpacity(
-                          opacity: opacity1,
+                          opacity: WomanOpacity,
                           duration: Duration(milliseconds: 300),
                           child: AnimatedScale(
-                            scale: scal1,
+                            scale: WomanScale,
                             duration: Duration(milliseconds: 300),
                             child: Image.asset("images/woman.png",
                                 width: 156, height: 278),
@@ -167,12 +180,12 @@ class _gender_PageState extends State<gender_Page> {
                 SizedBox(width: 90),
                 AnimatedOpacity(
                   duration: Duration(milliseconds: 100),
-                  opacity: opacity,
+                  opacity: ManOpacity,
                   child: AnimatedScale(
                     duration: Duration(milliseconds: 100),
-                    scale: scale,
+                    scale: ManScale,
                     child: Text(
-                      "مرد",
+                      textMan,
                       style:
                           TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
                     ),
@@ -181,12 +194,12 @@ class _gender_PageState extends State<gender_Page> {
                 SizedBox(width: 115),
                 AnimatedOpacity(
                   duration: Duration(milliseconds: 100),
-                  opacity: opacity1,
+                  opacity: WomanOpacity,
                   child: AnimatedScale(
                     duration: Duration(milliseconds: 100),
-                    scale: scal1,
+                    scale: WomanScale,
                     child: Text(
-                      "زن",
+                      textWoman,
                       style:
                           TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
                     ),
@@ -194,7 +207,7 @@ class _gender_PageState extends State<gender_Page> {
                 ),
               ],
             ),
-            SizedBox(height: 160),
+            SizedBox(height: 140),
             Visibility(
               visible: isvisible,
               child: ClipRRect(
@@ -205,10 +218,17 @@ class _gender_PageState extends State<gender_Page> {
                     primary: Color(0xff4FAF30),
                   ),
                   onPressed: () {
+                    if (clickManOrWoman == 0) {
+                      userData["gender"] = textMan;
+                    } else {
+                      userData["gender"] = textWoman;
+                    }
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (BuildContext context) {
-                          return Sickness_Page();
+                          return Sickness_Page(
+                            userData: userData,
+                          );
                         },
                       ),
                     );

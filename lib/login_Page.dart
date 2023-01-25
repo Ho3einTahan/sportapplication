@@ -16,7 +16,7 @@ class _login_PageState extends State<login_Page> {
   final TextEditingController textpassWord = TextEditingController();
   final TextEditingController textphoneNumber = TextEditingController();
   final TextEditingController textbirthDay = TextEditingController();
-
+  final formKey = GlobalKey<FormState>();
   bool isshow = true;
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class _login_PageState extends State<login_Page> {
                       left: -10, child: Image.asset("images/eclipsleft.png")),
                   Padding(
                     padding: EdgeInsets.only(
-                        right: 23, left: 23, top: 22, bottom: 22),
+                        right: 23, left: 23, top: 22, bottom: 16),
                     child: Center(
                         child: Container(
                       width: 314,
@@ -107,6 +107,7 @@ class _login_PageState extends State<login_Page> {
                         child: Directionality(
                           textDirection: TextDirection.rtl,
                           child: Form(
+                            key: formKey,
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
                             child: TextFormField(
@@ -180,15 +181,19 @@ class _login_PageState extends State<login_Page> {
                             minimumSize: Size(312, 50),
                           ),
                           onPressed: () async {
-                            await Authentication().login(
-                                textuserName.text.toString(),
-                                textpassWord.text.toString());
+                            if (formKey.currentState!.validate() == false) {
+                              return null;
+                            } else {
+                              await Authentication().login(
+                                  textuserName.text.toString(),
+                                  textpassWord.text.toString());
                               print("ok");
-                            Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(builder: (context) {
-                                return gender_Page();
-                              }),
-                            );
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(builder: (context) {
+                                  return gender_Page();
+                                }),
+                              );
+                            }
                           },
                           child: Text(
                             "ورود",
@@ -199,7 +204,7 @@ class _login_PageState extends State<login_Page> {
                       ),
                       SizedBox(height: 20),
                       ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
@@ -207,7 +212,7 @@ class _login_PageState extends State<login_Page> {
                             foregroundColor: Color(0xff4FAF30),
                             shape: RoundedRectangleBorder(
                               side: BorderSide(
-                                width: 1.2,
+                                width: 1.5,
                                 color: Color(0xff4FAF30),
                               ),
                             ),

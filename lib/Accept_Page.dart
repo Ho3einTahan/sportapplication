@@ -3,10 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sport_application/top_level_Appbar.dart';
 
 class Accept_Page extends StatefulWidget {
-  Accept_Page({
-    super.key,
-  });
-
+  Accept_Page({super.key, required this.userData});
+  Map<String, dynamic>? userData;
   @override
   State<Accept_Page> createState() => _Accept_PageState();
 }
@@ -44,7 +42,7 @@ class _Accept_PageState extends State<Accept_Page> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                topLevelAppbar(),
+                topLevelAppbar(position: 6),
                 Padding(
                   padding: const EdgeInsets.only(top: 30),
                   child: Text(
@@ -61,7 +59,8 @@ class _Accept_PageState extends State<Accept_Page> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("", textAlign: TextAlign.right, style: style_right),
+                      Text(widget.userData!["gender"].toString(),
+                          textAlign: TextAlign.right, style: style_right),
                       Text(":جنسیت",
                           textAlign: TextAlign.left,
                           style: style_Left), //////////
@@ -74,7 +73,8 @@ class _Accept_PageState extends State<Accept_Page> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("", textAlign: TextAlign.right, style: style_right),
+                      Text(widget.userData!["sickness"].toString(),
+                          textAlign: TextAlign.right, style: style_right),
                       Text(":بیماری ها",
                           textAlign: TextAlign.left,
                           style: style_Left), ////////////
@@ -100,7 +100,8 @@ class _Accept_PageState extends State<Accept_Page> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("", textAlign: TextAlign.right, style: style_right),
+                      Text(widget.userData!["target"].toString(),
+                          textAlign: TextAlign.right, style: style_right),
                       Text(":انگیزه ها",
                           textAlign: TextAlign.left,
                           style: style_Left), ///////////
@@ -113,7 +114,8 @@ class _Accept_PageState extends State<Accept_Page> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("", textAlign: TextAlign.right, style: style_right),
+                      Text(widget.userData!["bodylevel"].toString(),
+                          textAlign: TextAlign.right, style: style_right),
                       Text(":میزان آمادگی بدنی",
                           textAlign: TextAlign.left,
                           style: style_Left), //////////

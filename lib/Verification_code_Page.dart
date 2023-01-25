@@ -87,8 +87,7 @@ class _Verification_code_PageState extends State<Verification_code_Page> {
                       SizedBox(height: 32),
                       getfiled_Code(),
                       SizedBox(height: 24),
-                      Padding(
-                        padding: EdgeInsets.only(left: 180),
+                      Center(
                         child: TextButton(
                           onPressed: () {},
                           child: Text(
