@@ -2,27 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:sport_application/BodyLevel_Page.dart';
-import 'package:sport_application/Day_Page.dart';
-import 'package:sport_application/Forgot_Password_Page.dart';
-import 'package:sport_application/Loading_Page.dart';
 import 'package:sport_application/Package_Page.dart';
-import 'package:sport_application/Sickness_Page.dart';
-import 'package:sport_application/Target_Page.dart';
-import 'package:sport_application/Verification_code_Page.dart';
 import 'package:sport_application/gender_Page.dart';
-import 'package:sport_application/informationComplete_Page.dart';
-import 'package:sport_application/login_Page.dart';
 import 'package:sport_application/model/data/appdata.dart';
-import 'package:sport_application/sign_Up_Page.dart';
 import 'package:sport_application/tools/MaterialData.dart';
 
 void main() async {
-  bool? isview = false;
+  bool? isLogin = false;
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  isview = await sharedPreferences.getBool("login");
-  print(isview);
   runApp(
     MaterialApp(
       theme: CTheme(),
@@ -60,7 +48,7 @@ class _homeState extends State<home> {
   @override
   OnboardingInfo() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.setBool("isviewonboarding", true);
+    sharedPreferences.setBool("login", true);
   }
 
   Widget build(BuildContext context) {
