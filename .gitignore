@@ -31,6 +31,12 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+/android/build.gradle
+/android/settings.gradle
+/android/gradle/wrapper/gradle-wrapper.properties
+android/build.gradle
+android/settings.gradle
+android/gradle/wrapper/gradle-wrapper.properties
 
 # Web related
 lib/generated_plugin_registrant.dart
