@@ -31,14 +31,14 @@ class _Verification_code_PageState extends State<Verification_code_Page> {
                       left: -10, child: Image.asset("images/eclipsleft.png")),
                   Padding(
                     padding: EdgeInsets.only(
-                        right: 23, left: 23, top: 50, bottom: 80),
+                        right: 23, left: 23, top: 20, bottom: 60),
                     child: Center(
                         child: Container(
                       width: 314,
                       height: 234,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage("images/forgot-password.png"),
+                          image: AssetImage("images/image_Code.png"),
                         ),
                       ),
                     )),
@@ -100,7 +100,7 @@ class _Verification_code_PageState extends State<Verification_code_Page> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 50),
+                      SizedBox(height: 80),
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: ElevatedButton(
@@ -110,13 +110,13 @@ class _Verification_code_PageState extends State<Verification_code_Page> {
                           ),
                           onPressed: () {},
                           child: Text(
-                            "تایید",
+                            "ادامه",
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w400),
                           ),
                         ),
                       ),
-                      SizedBox(height: 24),
+
                     ],
                   ),
                 ),
@@ -134,31 +134,7 @@ class _Verification_code_PageState extends State<Verification_code_Page> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Container(
-            width: 35,
-            height: 48,
-            child: TextField(
-              decoration: InputDecoration(
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    width: 1.5,
-                    color: Color(0xff4FAF30),
-                  ),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    width: 1,
-                    color: Color(0xffAAAAAA),
-                  ),
-                ),
-              ),
-            ),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: borderRadius,
-              border: border,
-            ),
-          ),
+
           Container(
             width: 35,
             height: 48,

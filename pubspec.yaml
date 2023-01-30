@@ -30,14 +30,15 @@ dependencies:
   persian_datetime_picker: ^2.5.0
   dots_indicator: ^2.1.0
   carousel_slider: ^4.2.1
+  intro_slider: ^4.2.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
    
   
     
-
 flutter:
+
   uses-material-design: true
   assets:
    - images/

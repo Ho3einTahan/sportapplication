@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  String base_url = "http://178.63.65.55:8502/api/v1/";
+  String base_url = "http://178.63.65.55:8080/api/v1/";
   int timeout = 10;
 
   void set_base_url(url) {

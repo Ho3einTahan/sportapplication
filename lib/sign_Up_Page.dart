@@ -4,6 +4,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sport_application/Login_Page.dart';
 import 'package:sport_application/core/apis/Login.dart';
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
+
+import 'gender_Page.dart';
+import 'onboarding_Page.dart';
 // import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 class signUp_Page extends StatefulWidget {
@@ -41,8 +44,8 @@ class _signUp_PageState extends State<signUp_Page> {
                 Positioned(
                     left: -10, child: Image.asset("images/eclipsleft.png")),
                 Padding(
-                  padding:
-                      EdgeInsets.only(right: 23, left: 23, top: 22, bottom: 32),
+                  padding: EdgeInsets.only(
+                      right: 23, left: 23, top: 0, bottom: 16),
                   child: Center(
                       child: Container(
                     width: 312,
@@ -230,19 +233,31 @@ class _signUp_PageState extends State<signUp_Page> {
                       ),
                     ),
                   ),
+
+                  TextButton(onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: ((context) {
+                          return login_Page();
+                        }),
+                      ),
+                    );
+                  }, child:Text("حساب کاربری دارید؟ وارد شوید",style: TextStyle(
+                    color: Color(0xff357520),
+                  ),),),
                   // Container(
                   //   width: 320,
                   //   height: 80,
                   //   child: Directionality(
-                  //     textDirection: TextDirection.rtl,
-                  //     child: TextField(
-                  //       keyboardType: TextInputType.none,
                   //       controller: textbirthDay,
                   //       decoration: InputDecoration(
                   //         // icon: Icon(Icons.date_range_outlined),
                   //         floatingLabelStyle: TextStyle(
                   //           color: Color(0xff4FAF30),
                   //           fontSize: 24,
+                  //     textDirection: TextDirection.rtl,
+                  //     child: TextField(
+                  //       keyboardType: TextInputType.none,
                   //         ),
                   //         focusedBorder: OutlineInputBorder(
                   //           borderSide: BorderSide(
@@ -272,6 +287,7 @@ class _signUp_PageState extends State<signUp_Page> {
                   // ),
                   //   SizedBox(height: 20),
                   SighnAndLoginButton(),
+                  SizedBox(height:40),
                 ],
               ),
             ),
@@ -283,7 +299,7 @@ class _signUp_PageState extends State<signUp_Page> {
 
   Widget SighnAndLoginButton() {
     return Padding(
-      padding: const EdgeInsets.only(top: 40, bottom: 40),
+      padding: const EdgeInsets.only(top: 10, bottom: 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [

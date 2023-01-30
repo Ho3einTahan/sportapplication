@@ -1,3 +1,4 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:sport_application/core/apis/Login.dart';
 import 'package:sport_application/gender_Page.dart';
@@ -32,10 +33,10 @@ class _login_PageState extends State<login_Page> {
                       left: -10, child: Image.asset("images/eclipsleft.png")),
                   Padding(
                     padding: EdgeInsets.only(
-                        right: 23, left: 23, top: 22, bottom: 16),
+                        right: 23, left: 23, top: 0, bottom: 16),
                     child: Center(
                         child: Container(
-                      width: 314,
+                      width: MediaQuery.of(context).size.width - 128,
                       height: 234,
                       decoration: BoxDecoration(
                         image: DecorationImage(
@@ -158,80 +159,22 @@ class _login_PageState extends State<login_Page> {
                         ),
                       ),
                       SizedBox(height: 10),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(130, 0, 30, 0),
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "رمز عبور خود را فراموش کرده اید؟",
-                            style: TextStyle(
-                              color: Color(0xff357520),
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 15),
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Color(0xff4FAF30),
-                            minimumSize: Size(312, 50),
-                          ),
-                          onPressed: () async {
-                            if (formKey.currentState!.validate() == false) {
-                              return null;
-                            } else {
-                              await Authentication().login(
-                                  textuserName.text.toString(),
-                                  textpassWord.text.toString());
-                              print("ok");
-                              Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(builder: (context) {
-                                  return gender_Page();
-                                }),
-                              );
-                            }
-                          },
-                          child: Text(
-                            "ورود",
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.w400),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(8)),
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white,
-                            minimumSize: Size(312, 48),
-                            foregroundColor: Color(0xff4FAF30),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                width: 1.5,
-                                color: Color(0xff4FAF30),
+                    Center(
+                      child: TextButton(
+                            onPressed: () {},
+                            child: Text("رمز عبور خود را فراموش کرده اید؟",
+                              style: TextStyle(
+                                color: Color(0xff357520),
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                           ),
-                          onPressed: () {
-                            Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(builder: (context) {
-                                return signUp_Page();
-                              }),
-                            );
-                          },
-                          child: Text(
-                            "ثبت نام",
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.w400),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
+                    ),
+
+                      SizedBox(height: 60),
+                      SighnAndLoginButton(),
+                      SizedBox(height: 80),
                     ],
                   ),
                 ),
@@ -239,6 +182,82 @@ class _login_PageState extends State<login_Page> {
             ],
           ),
         ),
+      ),
+    );
+  }
+  Widget SighnAndLoginButton() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 10, bottom: 0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.white,
+              minimumSize: Size(145, 48),
+              foregroundColor: Color(0xff4FAF30),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+                side: BorderSide(
+                  width: 1.5,
+                  color: Color(0xff4FAF30),
+                ),
+              ),
+            ),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (contex) {
+                  return login_Page();
+                }),
+              );
+            },
+            child: Text(
+              "ورود",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+            ),
+          ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Color(0xff4FAF30),
+                minimumSize: Size(145, 48),
+              ),
+              onPressed: () async {
+                final login = await Authentication().login(
+
+
+                    textphoneNumber.text.toString(),
+                    textpassWord.text.toString()
+                );
+                print(login);
+                final snackBar = SnackBar(
+                  elevation: 0,
+                  behavior: SnackBarBehavior.floating,
+                  backgroundColor: Colors.transparent,
+                  content: login
+                      ? AwesomeSnackbarContent(
+                    title: 'موفقیت آمیز!',
+                    message: 'شما با موفقیت ثبت نام شدید!',
+                    contentType: ContentType.success,
+                  )
+                      : AwesomeSnackbarContent(
+                    title: 'خطا!',
+                    message: 'نام کاربری شما یا ایمیل شما وجود دارد!',
+                    contentType: ContentType.failure,
+                  ),
+                );
+                ScaffoldMessenger.of(context)
+                  ..hideCurrentSnackBar()
+                  ..showSnackBar(snackBar);
+              },
+              child: Text(
+                "ثبت نام",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

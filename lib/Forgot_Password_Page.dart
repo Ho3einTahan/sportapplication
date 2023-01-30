@@ -31,7 +31,7 @@ class _Forgot_Password_PageState extends State<Forgot_Password_Page> {
                       left: -10, child: Image.asset("images/eclipsleft.png")),
                   Padding(
                     padding: EdgeInsets.only(
-                        right: 23, left: 23, top: 50, bottom: 80),
+                        right: 23, left: 23, top: 30, bottom: 40),
                     child: Center(
                         child: Container(
                       width: 314,
@@ -133,7 +133,7 @@ class _Forgot_Password_PageState extends State<Forgot_Password_Page> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 50),
+                      SizedBox(height: 85),
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: ElevatedButton(
@@ -149,7 +149,7 @@ class _Forgot_Password_PageState extends State<Forgot_Password_Page> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 24),
+
                     ],
                   ),
                 ),
