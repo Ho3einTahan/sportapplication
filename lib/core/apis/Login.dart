@@ -22,11 +22,11 @@ class Authentication {
       print(loginData);
       jwtService.set_token(loginData.access);
       jwtService.set_refresh_token(loginData.refresh);
-      spService.set_bool("login", true);
+      spService.set_key("login", true);
       return true;
     } else {
       print("false");
-      spService.set_bool("login", false);
+      spService.set_key("login", false);
       return false;
     }
   }
@@ -43,11 +43,11 @@ class Authentication {
       SignUpData signUpData =
           SignUpData.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
       print(signUpData);
-      spService.set_bool("login", true);
+      spService.set_key("login", true);
       return true;
     } else {
       print("false");
-      spService.set_bool("login", false);
+      spService.set_key("login", false);
       return false;
     }
   }

@@ -1,25 +1,25 @@
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get_storage/get_storage.dart';
 
 class JwtService {
-  getShared() async {
-    final SharedPreferences Shared = await SharedPreferences.getInstance();
-    return Shared;
+  getShared() {
+    GetStorage getStorage = GetStorage();
+    return getStorage;
   }
 
   Future set_token(String value) async {
-    getShared().setString("access", value);
+    getShared().write("access", value);
   }
 
   Future set_refresh_token(String value) async {
-    getShared().setString("refresh", value);
+    getShared().write("refresh", value);
   }
 
   Future get_token() async {
-    return getShared().getString("access");
+    return getShared().read("access");
   }
 
   Future get_refresh_token() async {
-    return getShared().getString("refresh");
+    return getShared().read("refresh");
   }
 
   Future del_token_refresh() async {

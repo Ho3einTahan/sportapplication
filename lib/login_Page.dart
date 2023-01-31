@@ -1,12 +1,12 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sport_application/core/apis/Login.dart';
 import 'package:sport_application/gender_Page.dart';
 import 'package:sport_application/sign_Up_Page.dart';
 
 class login_Page extends StatefulWidget {
   login_Page({super.key});
-// صفحه ورود کاربر
 
   @override
   State<login_Page> createState() => _login_PageState();
@@ -19,6 +19,7 @@ class _login_PageState extends State<login_Page> {
   final TextEditingController textbirthDay = TextEditingController();
   final formKey = GlobalKey<FormState>();
   bool isshow = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -159,19 +160,19 @@ class _login_PageState extends State<login_Page> {
                         ),
                       ),
                       SizedBox(height: 10),
-                    Center(
-                      child: TextButton(
-                            onPressed: () {},
-                            child: Text("رمز عبور خود را فراموش کرده اید؟",
-                              style: TextStyle(
-                                color: Color(0xff357520),
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                              ),
+                      Center(
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            "رمز عبور خود را فراموش کرده اید؟",
+                            style: TextStyle(
+                              color: Color(0xff357520),
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
-                    ),
-
+                        ),
+                      ),
                       SizedBox(height: 60),
                       SighnAndLoginButton(),
                       SizedBox(height: 80),
@@ -185,7 +186,9 @@ class _login_PageState extends State<login_Page> {
       ),
     );
   }
+
   Widget SighnAndLoginButton() {
+    bool is_sended = false;
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 0),
       child: Row(
@@ -204,16 +207,42 @@ class _login_PageState extends State<login_Page> {
                 ),
               ),
             ),
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (contex) {
-                  return login_Page();
-                }),
-              );
+            onPressed: () async {
+              setState(() {
+                is_sended = !is_sended;
+              });
+              new Future.delayed(const Duration(seconds: 3), () async {
+                print('delayed execution');
+              });
+              final login = await Authentication().login(
+                  textphoneNumber.text.toString(),
+                  textpassWord.text.toString());
+              print(login);
+              setState(() {
+                is_sended = !is_sended;
+              });
+              Get.snackbar('موفقیت آمیز!', 'شما با موفقیت ثبت نام شدید!',
+                  backgroundColor: Colors.red, barBlur: 50);
+              Get.snackbar('خطا!', 'نام کاربری شما یا ایمیل شما وجود دارد!');
             },
-            child: Text(
-              "ورود",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+            child: Row(
+              children: <Widget>[
+                Visibility(
+                  visible: is_sended,
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.only(right: 12, top: 6, bottom: 6),
+                    child: CircularProgressIndicator(
+                      backgroundColor: Colors.white,
+                      strokeWidth: 2,
+                    ),
+                  ),
+                ),
+                Text(
+                  "ورود",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+                ),
+              ],
             ),
           ),
           ClipRRect(
@@ -224,32 +253,11 @@ class _login_PageState extends State<login_Page> {
                 minimumSize: Size(145, 48),
               ),
               onPressed: () async {
-                final login = await Authentication().login(
-
-
-                    textphoneNumber.text.toString(),
-                    textpassWord.text.toString()
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (contex) {
+                    return login_Page();
+                  }),
                 );
-                print(login);
-                final snackBar = SnackBar(
-                  elevation: 0,
-                  behavior: SnackBarBehavior.floating,
-                  backgroundColor: Colors.transparent,
-                  content: login
-                      ? AwesomeSnackbarContent(
-                    title: 'موفقیت آمیز!',
-                    message: 'شما با موفقیت ثبت نام شدید!',
-                    contentType: ContentType.success,
-                  )
-                      : AwesomeSnackbarContent(
-                    title: 'خطا!',
-                    message: 'نام کاربری شما یا ایمیل شما وجود دارد!',
-                    contentType: ContentType.failure,
-                  ),
-                );
-                ScaffoldMessenger.of(context)
-                  ..hideCurrentSnackBar()
-                  ..showSnackBar(snackBar);
               },
               child: Text(
                 "ثبت نام",

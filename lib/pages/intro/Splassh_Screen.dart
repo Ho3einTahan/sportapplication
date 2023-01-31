@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sport_application/core/SpServices.dart';
 import 'package:sport_application/gender_Page.dart';
 import 'package:sport_application/onboarding_Page.dart';
 
@@ -15,8 +15,8 @@ class _Splash_ScreenState extends State<Splash_Screen> {
   void initState() async {
     // TODO: implement initState
     super.initState();
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    bool? is_login = await sharedPreferences.setBool("login", true);
+    SpService spService = SpService();
+    bool? is_login = await spService.get_key("login");
     Future.delayed(Duration(seconds: 3)).then((value) {
       Navigator.of(context).push(
         MaterialPageRoute(

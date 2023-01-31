@@ -3,6 +3,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:sport_application/model/data/article_Data.dart';
 
 class articles_Page extends StatefulWidget {
   articles_Page({Key? key}) : super(key: key);
@@ -14,6 +15,7 @@ class articles_Page extends StatefulWidget {
 class _articles_PageState extends State<articles_Page> {
   @override
   Widget build(BuildContext context) {
+    final article_Image = get_article_Data().articleimage;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xff4FAF30),
@@ -29,7 +31,7 @@ class _articles_PageState extends State<articles_Page> {
         child: Column(
           children: [
             CarouselSlider.builder(
-              itemCount: 3,
+              itemCount: article_Image.length,
               itemBuilder: (context, index, realIndex) {
                 return Container(
                   margin: EdgeInsets.all(16),
@@ -37,7 +39,7 @@ class _articles_PageState extends State<articles_Page> {
                   height: 120,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage("images/instagram_slider.png"),
+                      image: AssetImage("${article_Image[index].imagePath}"),
                     ),
                   ),
                 );
@@ -47,10 +49,23 @@ class _articles_PageState extends State<articles_Page> {
                 viewportFraction: 1,
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 16, left: 280, right: 16, bottom: 8),
+              child: Text("جدید ترین ها"),
+            ),ListView.builder(itemCount: 2,
 
-            // PageView.builder(itemBuilder:(context, index) {
-            //
-            // },),
+              shrinkWrap: true,
+              itemBuilder:(context, index) {
+                return Container(
+                  width: 113,
+                  height: 96,
+                  decoration: BoxDecoration(     image: DecorationImage(image: AssetImage("${article_Image[index].imagePath}"),),
+
+                  ),
+                );
+              },),
+
           ],
         ),
       ),

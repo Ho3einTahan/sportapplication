@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:sport_application/core/SpServices.dart';
 import 'package:sport_application/top_level_Appbar.dart';
 
 class Accept_Page extends StatefulWidget {
   Accept_Page({super.key, required this.userData});
+
   Map<String, dynamic>? userData;
+
   @override
   State<Accept_Page> createState() => _Accept_PageState();
 }
@@ -15,14 +18,14 @@ TextStyle style_Left = TextStyle(
     fontSize: 14, fontWeight: FontWeight.w400, fontFamily: "iranyekan");
 String? gender;
 String? sickness;
+SpService spService = SpService();
+
 getgender() async {
-  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  gender = sharedPreferences.getString("gender");
+  gender = await spService.get_key("gender");
 }
 
 getsickness() async {
-  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  sharedPreferences.getString("sickness");
+  sickness = await spService.get_key("sickness");
 }
 
 class _Accept_PageState extends State<Accept_Page> {

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:sport_application/core/SpServices.dart';
 
 import 'main.dart';
 import 'model/data/appdata.dart';
@@ -15,6 +15,8 @@ class onboarding_Page extends StatefulWidget {
 
 class _onboarding_PageState extends State<onboarding_Page> {
   final PageController pageController = PageController();
+  SpService spService = SpService();
+  bool is_login = false;
   final image_Path = appDataBase().imagePath;
   final content_Page = appDataBase().contentPageView;
   final topcontent = appDataBase().topcontent;
@@ -34,8 +36,7 @@ class _onboarding_PageState extends State<onboarding_Page> {
 
   @override
   OnboardingInfo() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.setBool("login", true);
+    is_login = await spService.get_key("login");
   }
 
   Widget build(BuildContext context) {
@@ -66,7 +67,7 @@ class _onboarding_PageState extends State<onboarding_Page> {
                                     Positioned(
                                       right: -10,
                                       child:
-                                      Image.asset("images/eclipsright.png"),
+                                          Image.asset("images/eclipsright.png"),
                                     ),
                                     PageView.builder(
                                       controller: pageController,
@@ -79,25 +80,31 @@ class _onboarding_PageState extends State<onboarding_Page> {
                                               width: 179,
                                               height: 179,
                                             ),
-                                            SizedBox(height: 75), Padding(
-                                              padding: const EdgeInsets.symmetric(vertical: 24),
+                                            SizedBox(height: 75),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 24),
                                               child: Text(
-                                                topcontent[index].contentPageView,
+                                                topcontent[index]
+                                                    .contentPageView,
                                                 style: TextStyle(
                                                     fontSize: 24,
-                                                    fontWeight:FontWeight.w700,
+                                                    fontWeight: FontWeight.w700,
                                                     fontFamily: 'iranyekan'),
                                                 textAlign: TextAlign.center,
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsets.symmetric(horizontal: 24),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 24),
                                               child: Text(
                                                 content_Page[index]
                                                     .contentPageView,
                                                 style: TextStyle(
                                                     fontSize: 18,
-                                                    fontWeight:FontWeight.w400,
+                                                    fontWeight: FontWeight.w400,
                                                     fontFamily: 'iranyekan'),
                                                 textAlign: TextAlign.center,
                                               ),
@@ -136,7 +143,6 @@ class _onboarding_PageState extends State<onboarding_Page> {
                             ),
                             onPressed: () async {
                               if (page == image_Path.length - 1) {
-                                await OnboardingInfo();
                                 setState(() {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(builder: (contex) {
