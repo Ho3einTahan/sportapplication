@@ -1,16 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ruler_picker/flutter_ruler_picker.dart';
 import 'package:sport_application/Accept_Page.dart';
+import 'package:sport_application/top_level_Appbar.dart';
 
 class bmi_Page extends StatefulWidget {
-   bmi_Page({super.key, this.textgender, this.textSickness, this.textskeletalProblem, this.textTarget, this.textBodyLevel, this.textheight, this.textWeight});
+  bmi_Page(
+      {super.key,
+      this.textgender,
+      this.textSickness,
+      this.textskeletalProblem,
+      this.textTarget,
+      this.textBodyLevel,
+      this.textheight,
+      this.textWeight});
 //Bmi صفحه دریافت
- final String? textgender;
- final String? textSickness;
- final String? textskeletalProblem;
- final String? textTarget;
- final String? textBodyLevel;
- final String? textheight;
- final String? textWeight;
+  final String? textgender;
+  final String? textSickness;
+  final String? textskeletalProblem;
+  final String? textTarget;
+  final String? textBodyLevel;
+  final String? textheight;
+  final String? textWeight;
   @override
   State<bmi_Page> createState() => _bmi_PageState();
 }
@@ -24,74 +34,65 @@ class _bmi_PageState extends State<bmi_Page> {
       body: SafeArea(
         child: Column(
           children: [
+            topLevelAppbar(position: 4),
             Padding(
               padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
               child: Center(
                   child: Text(
-                "قد و وزنت چقدره؟",
+                "قد، وزن و تاریخ تولدت چنده؟",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                 ),
               )),
             ),
-            SizedBox(height: 56),
+            SizedBox(height: 10),
             Padding(
-              padding: EdgeInsets.fromLTRB(230, 0, 0, 0),
+              padding: EdgeInsets.fromLTRB(280, 20, 0, 0),
               child: Text(
-                "${height.round().toString()} :قد",
+                " :قد",
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w500,
                 ),
               ),
             ),
-            SizedBox(height: 15),
+            SizedBox(height: 20),
+            RulerPicker(
+                beginValue: 100,
+                endValue: 210,
+                onValueChange: (value) {},
+                width: 330,
+                height: 82),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Slider(
-                value: height,
-                min: 100,
-                max: 200,
-                activeColor: Color(0xff4FAF30),
-                // divisions: 40,
-                // label: value.roundToDouble().toString(),
-                onChanged: (value) {
-                  setState(() {
-                    this.height = value;
-                  });
-                },
-              ),
-            ),
-            SizedBox(height: 38),
-            Padding(
-              padding: EdgeInsets.fromLTRB(231, 0, 0, 0),
+              padding: EdgeInsets.fromLTRB(280, 20, 0, 0),
               child: Text(
-                "${weight.round().toString()} :وزن",
+                " :وزن",
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w500,
                 ),
               ),
             ),
-            SizedBox(height: 15),
+            SizedBox(height: 20),
+            RulerPicker(
+                beginValue: 40,
+                endValue: 200,
+                onValueChange: (value) {},
+                width: 330,
+                height: 82),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Slider(
-                value: weight,
-                min: 40,
-                max: 180,
-                activeColor: Color(0xff4FAF30),
-                // divisions: 40,
-                // label: value.roundToDouble().toString(),
-                onChanged: (value) {
-                  setState(() {
-                    this.weight = value;
-                  });
-                },
+              padding: EdgeInsets.fromLTRB(280, 20, 0, 0),
+              child: Text(
+                " :تاریخ تولد",
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
-            SizedBox(height: 320),
+            SizedBox(height: 20),
+            // SizedBox(height: 320),
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: ElevatedButton(

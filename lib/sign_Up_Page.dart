@@ -44,8 +44,8 @@ class _signUp_PageState extends State<signUp_Page> {
                 Positioned(
                     left: -10, child: Image.asset("images/eclipsleft.png")),
                 Padding(
-                  padding: EdgeInsets.only(
-                      right: 23, left: 23, top: 0, bottom: 16),
+                  padding:
+                      EdgeInsets.only(right: 23, left: 23, top: 0, bottom: 16),
                   child: Center(
                       child: Container(
                     width: 312,
@@ -233,61 +233,25 @@ class _signUp_PageState extends State<signUp_Page> {
                       ),
                     ),
                   ),
-
-                  TextButton(onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: ((context) {
-                          return login_Page();
-                        }),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: ((context) {
+                            return login_Page();
+                          }),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "حساب کاربری دارید؟ وارد شوید",
+                      style: TextStyle(
+                        color: Color(0xff357520),
                       ),
-                    );
-                  }, child:Text("حساب کاربری دارید؟ وارد شوید",style: TextStyle(
-                    color: Color(0xff357520),
-                  ),),),
-                  // Container(
-                  //   width: 320,
-                  //   height: 80,
-                  //   child: Directionality(
-                  //       controller: textbirthDay,
-                  //       decoration: InputDecoration(
-                  //         // icon: Icon(Icons.date_range_outlined),
-                  //         floatingLabelStyle: TextStyle(
-                  //           color: Color(0xff4FAF30),
-                  //           fontSize: 24,
-                  //     textDirection: TextDirection.rtl,
-                  //     child: TextField(
-                  //       keyboardType: TextInputType.none,
-                  //         ),
-                  //         focusedBorder: OutlineInputBorder(
-                  //           borderSide: BorderSide(
-                  //             color: Color(0xff4FAF30),
-                  //             width: 2,
-                  //           ),
-                  //           borderRadius: BorderRadius.circular(8),
-                  //         ),
-                  //         label: Text("تاریخ تولد"),
-                  //         border: OutlineInputBorder(
-                  //           borderRadius: BorderRadius.circular(8),
-                  //         ),
-                  //       ),
-                  //       onTap: () async {
-                  //         Jalali? pickedDateTime = await showPersianDatePicker(
-                  //           context: context,
-                  //           initialDate: Jalali.now(),
-                  //           firstDate: Jalali(1385, 8),
-                  //           lastDate: Jalali(1450, 9),
-                  //         );
-                  //         if (pickedDateTime != null) {
-                  //           textbirthDay.text = pickedDateTime.formatCompactDate();
-                  //         }
-                  //       },
-                  //     ),
-                  //   ),
-                  // ),
-                  //   SizedBox(height: 20),
+                    ),
+                  ),
+                  SizedBox(height: 30),
                   SighnAndLoginButton(),
-                  SizedBox(height:40),
                 ],
               ),
             ),

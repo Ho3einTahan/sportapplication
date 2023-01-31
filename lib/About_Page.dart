@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sport_application/setting/Menu_Page.dart';
 import 'package:sport_application/setting/about_Page.dart';
 
 class About_Page extends StatefulWidget {
@@ -16,9 +15,7 @@ class _About_PageState extends State<About_Page> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        endDrawer: Drawer(
-          child: Menu_Page(title: "menu"),
-        ),
+      
         appBar: AppBar(
           toolbarHeight: 105,
           elevation: 0,

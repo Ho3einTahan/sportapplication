@@ -30,7 +30,8 @@ class _gender_PageState extends State<gender_Page> {
       "sickness": null,
       "target": null,
       "bodylevel": null,
-      "bmi": null
+      "weight": null,
+      "height":null
     };
     return Scaffold(
       body: SingleChildScrollView(
