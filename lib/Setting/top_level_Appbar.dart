@@ -1,7 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class topLevelAppbar extends StatefulWidget {
   topLevelAppbar({super.key, required this.position});

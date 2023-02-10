@@ -1,13 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:sport_application/Login_Page.dart';
+import 'package:sizer/sizer.dart';
+import 'package:sport_application/Acounting/login_Page.dart';
 import 'package:sport_application/core/apis/Login.dart';
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
-
-import 'gender_Page.dart';
-import 'onboarding_Page.dart';
-// import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 class signUp_Page extends StatefulWidget {
   signUp_Page({super.key});
@@ -32,7 +29,8 @@ class _signUp_PageState extends State<signUp_Page> {
     super.initState();
   }
 
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {  final height_Screen = MediaQuery.of(context).size.height;
+  final width_Screen = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
@@ -43,24 +41,21 @@ class _signUp_PageState extends State<signUp_Page> {
               children: [
                 Positioned(
                     left: -10, child: Image.asset("images/eclipsleft.png")),
-                Padding(
-                  padding:
-                      EdgeInsets.only(right: 23, left: 23, top: 0, bottom: 16),
-                  child: Center(
-                      child: Container(
-                    width: 312,
-                    height: 234,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("images/upman.png"),
-                      ),
+                Center(
+                    child: Container(
+                      width: MediaQuery.of(context).size.width - 128,
+                      height: 38.h,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(   fit: BoxFit.cover,
+                      image: AssetImage("images/upman.png"),
                     ),
-                  )),
-                ),
+                  ),
+                )),
               ],
             ),
             Container(
               width: MediaQuery.of(context).size.width,
+              height: height_Screen<=800?57.h:58.h,
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 243, 243, 243),
                 borderRadius: BorderRadius.only(
@@ -71,17 +66,17 @@ class _signUp_PageState extends State<signUp_Page> {
                 children: [
                   Center(
                     child: Padding(
-                      padding: EdgeInsets.only(top: 8, bottom: 20),
+                      padding: EdgeInsets.only(top: 3.h, bottom: 4.h),
                       child: Text(
                         "ثبت نام",
                         style: TextStyle(
-                            fontSize: 26, fontWeight: FontWeight.w700),
+                            fontSize: 20.sp, fontWeight: FontWeight.w700),
                       ),
                     ),
                   ),
                   Container(
-                    width: double.infinity,
-                    height: 80,
+                    width: 100.w,
+                    height: 7.h,
                     padding: EdgeInsets.symmetric(horizontal: 24),
                     child: Directionality(
                       textDirection: TextDirection.rtl,
@@ -101,7 +96,7 @@ class _signUp_PageState extends State<signUp_Page> {
                           ),
                           floatingLabelStyle: TextStyle(
                             color: Color(0xff4FAF30),
-                            fontSize: 24,
+                            fontSize: 20.sp,
                           ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8),
@@ -110,10 +105,10 @@ class _signUp_PageState extends State<signUp_Page> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  SizedBox(height: 4.h),
                   Container(
-                    width: double.infinity,
-                    height: 80,
+                    width: 100.w,
+                    height: 7.h,
                     padding: EdgeInsets.symmetric(horizontal: 24),
                     child: Directionality(
                       textDirection: TextDirection.rtl,
@@ -151,7 +146,7 @@ class _signUp_PageState extends State<signUp_Page> {
                             ),
                             floatingLabelStyle: TextStyle(
                               color: textstyleFloatingLabale,
-                              fontSize: 24,
+                              fontSize: 20.sp,
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
@@ -185,14 +180,14 @@ class _signUp_PageState extends State<signUp_Page> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  SizedBox(height: 4.h),
                   Padding(
                     padding: EdgeInsets.only(
                       bottom: MediaQuery.of(context).viewInsets.bottom,
                     ),
                     child: Container(
-                      width: double.infinity,
-                      height: 80,
+                      width: 100.w,
+                      height: 7.h,
                       padding: EdgeInsets.symmetric(horizontal: 24),
                       child: Directionality(
                         textDirection: TextDirection.rtl,
@@ -233,25 +228,20 @@ class _signUp_PageState extends State<signUp_Page> {
                       ),
                     ),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: ((context) {
-                            return login_Page();
-                          }),
-                        ),
-                      );
-                    },
-                    child: Text(
-                      "حساب کاربری دارید؟ وارد شوید",
-                      style: TextStyle(
-                        color: Color(0xff357520),
-                      ),
+              //    SizedBox(height: 3.5.h),
+                  if(height_Screen<=800)
+                    Padding(
+                      padding: EdgeInsets.only(top: 5.8.h),
+                      child: SighnAndLoginButton(),
                     ),
-                  ),
-                  SizedBox(height: 30),
-                  SighnAndLoginButton(),
+                  //   SizedBox(height: 1.h),
+                  if(height_Screen>800)
+                    Padding(
+                      padding: EdgeInsets.only(top: 9.h),
+                      child: SighnAndLoginButton(),
+                    ),
+                  //   SizedBox(height: 1.h),
+
                 ],
               ),
             ),
@@ -262,78 +252,75 @@ class _signUp_PageState extends State<signUp_Page> {
   }
 
   Widget SighnAndLoginButton() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10, bottom: 0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
-              minimumSize: Size(145, 48),
-              foregroundColor: Color(0xff4FAF30),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-                side: BorderSide(
-                  width: 1.5,
-                  color: Color(0xff4FAF30),
-                ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.white,
+            minimumSize: Size(35.w, 6.h),
+            foregroundColor: Color(0xff4FAF30),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+              side: BorderSide(
+                width: 1.5,
+                color: Color(0xff4FAF30),
               ),
             ),
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (contex) {
-                  return login_Page();
-                }),
+          ),
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (contex) {
+                return login_Page();
+              }),
+            );
+          },
+          child: Text(
+            "ورود",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+          ),
+        ),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: Color(0xff4FAF30),
+              minimumSize: Size(35.w, 6.h),
+            ),
+            onPressed: () async {
+              final sign_up = await Authentication().sign_up(
+                  textuserName.text.toString(),
+                  textpassWord.text.toString(),
+                  textEmail.text.toString(),
+                  textbirthDay.text.toString());
+              print(sign_up);
+              final snackBar = SnackBar(
+                elevation: 0,
+                behavior: SnackBarBehavior.floating,
+                backgroundColor: Colors.transparent,
+                content: sign_up
+                    ? AwesomeSnackbarContent(
+                        title: 'موفقیت آمیز!',
+                        message: 'شما با موفقیت ثبت نام شدید!',
+                        contentType: ContentType.success,
+                      )
+                    : AwesomeSnackbarContent(
+                        title: 'خطا!',
+                        message: 'نام کاربری شما یا ایمیل شما وجود دارد!',
+                        contentType: ContentType.failure,
+                      ),
               );
+              ScaffoldMessenger.of(context)
+                ..hideCurrentSnackBar()
+                ..showSnackBar(snackBar);
             },
             child: Text(
-              "ورود",
+              "ثبت نام",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
             ),
           ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Color(0xff4FAF30),
-                minimumSize: Size(145, 48),
-              ),
-              onPressed: () async {
-                final sign_up = await Authentication().sign_up(
-                    textuserName.text.toString(),
-                    textpassWord.text.toString(),
-                    textEmail.text.toString(),
-                    textbirthDay.text.toString());
-                print(sign_up);
-                final snackBar = SnackBar(
-                  elevation: 0,
-                  behavior: SnackBarBehavior.floating,
-                  backgroundColor: Colors.transparent,
-                  content: sign_up
-                      ? AwesomeSnackbarContent(
-                          title: 'موفقیت آمیز!',
-                          message: 'شما با موفقیت ثبت نام شدید!',
-                          contentType: ContentType.success,
-                        )
-                      : AwesomeSnackbarContent(
-                          title: 'خطا!',
-                          message: 'نام کاربری شما یا ایمیل شما وجود دارد!',
-                          contentType: ContentType.failure,
-                        ),
-                );
-                ScaffoldMessenger.of(context)
-                  ..hideCurrentSnackBar()
-                  ..showSnackBar(snackBar);
-              },
-              child: Text(
-                "ثبت نام",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-              ),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

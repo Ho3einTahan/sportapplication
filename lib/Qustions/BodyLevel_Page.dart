@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sport_application/Accept_Page.dart';
-import 'package:sport_application/Bmi_Page.dart';
+import 'package:sport_application/Qustions/Accept_Page.dart';
+import 'package:sport_application/Qustions/Bmi_Page.dart';
+import 'package:sport_application/BottomNav/Primary_page.dart';
 import 'package:sport_application/model/data/BodyLevel_Data.dart';
-import 'package:sport_application/top_level_Appbar.dart';
+import 'package:sport_application/setting/top_level_Appbar.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 import 'Sickness_Page.dart';
@@ -203,7 +204,7 @@ class _BodyLevel_PageState extends State<BodyLevel_Page> {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (BuildContext context) {
-                                return Accept_Page(userData: widget.userData);
+                                return Primary_Page();
                               },
                             ),
                           );

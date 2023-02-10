@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:sport_application/core/SpServices.dart';
-import 'package:sport_application/top_level_Appbar.dart';
+import 'package:sport_application/setting/top_level_Appbar.dart';
 
 class Accept_Page extends StatefulWidget {
   Accept_Page({super.key, required this.userData});
@@ -62,7 +62,7 @@ class _Accept_PageState extends State<Accept_Page> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(widget.userData!["gender"].toString(),
+                      Text("",
                           textAlign: TextAlign.right, style: style_right),
                       Text(":جنسیت",
                           textAlign: TextAlign.left,

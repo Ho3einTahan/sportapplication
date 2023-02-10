@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:sport_application/core/SpServices.dart';
+import 'package:sport_application/Acounting/login_Page.dart';
 
-import 'main.dart';
-import 'model/data/appdata.dart';
+import '../../main.dart';
+import '../../model/data/appdata.dart';
 
 class onboarding_Page extends StatefulWidget {
   onboarding_Page({super.key});
@@ -146,7 +147,7 @@ class _onboarding_PageState extends State<onboarding_Page> {
                                 setState(() {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(builder: (contex) {
-                                      return MyApp();
+                                      return login_Page();
                                     }),
                                   );
                                 });

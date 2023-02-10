@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sport_application/core/SpServices.dart';
-import 'package:sport_application/gender_Page.dart';
-import 'package:sport_application/onboarding_Page.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:sport_application/Conection_Internet/check_Conectivity.dart';
+
+import 'onboarding_Page.dart';
 
 class Splash_Screen extends StatefulWidget {
   Splash_Screen({Key? key}) : super(key: key);
@@ -11,21 +12,30 @@ class Splash_Screen extends StatefulWidget {
 }
 
 class _Splash_ScreenState extends State<Splash_Screen> {
+  Future checker() async {
+    bool result = await InternetConnectionChecker().hasConnection;
+    if (result == true) {
+      Future.delayed(Duration(seconds: 2)).then((value) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) {
+            return onboarding_Page();
+          }),
+        );
+      });
+    } else {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) {
+          return Check_Conectivity();
+        }),
+      );
+    }
+  }
+
   @override
-  void initState() async {
+  void initState() {
     // TODO: implement initState
     super.initState();
-    SpService spService = SpService();
-    bool? is_login = await spService.get_key("login");
-    Future.delayed(Duration(seconds: 3)).then((value) {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: ((context) {
-            return is_login==false? onboarding_Page():gender_Page();
-          }),
-        ),
-      );
-    });
+    checker();
   }
 
   TextStyle textStyle_bottom =

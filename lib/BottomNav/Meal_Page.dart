@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'Chat_Page.dart';
 import 'articles_Page.dart';
-import 'home_Page.dart';
+import 'Primary_page.dart';
 
 class Meal_Page extends StatefulWidget {
   const Meal_Page({super.key});
@@ -14,8 +14,7 @@ class Meal_Page extends StatefulWidget {
 class _Meal_PageState extends State<Meal_Page> {
   TextStyle toptext = TextStyle(fontSize: 20, fontWeight: FontWeight.w700);
   TextStyle boxText = TextStyle(fontSize: 20, fontWeight: FontWeight.w400);
-  int index = 0;
-  var listpage = [home_Page(), articles_Page(), Chat_Page()];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -173,53 +172,7 @@ class _Meal_PageState extends State<Meal_Page> {
                 ],
               ),
             ),
-            Positioned(
-                bottom: 0, right: 24, left: 24, child: bottomNavigationbar()),
-          ],
-        ),
-      ),
-    );
-  }
 
-  Widget bottomNavigationbar() {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8),
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: 60,
-        decoration: BoxDecoration(),
-        child: BottomNavigationBar(
-          selectedItemColor: Color(0xff4FAF30),
-          unselectedItemColor: Color(0xff555555),
-          currentIndex: index,
-          onTap: (value) {
-            setState(() {
-              index = value;
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) {
-                  return listpage[index];
-                }),
-              );
-            });
-          },
-          items: [
-            BottomNavigationBarItem(
-              label: "خانه",
-              icon: Icon(Icons.home, size: 25),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.menu_book, size: 25),
-              label: "مقالات",
-            ),
-            BottomNavigationBarItem(
-              label: "گفتگو ها",
-              icon: Icon(Icons.chat, size: 25),
-            ),
-            BottomNavigationBarItem(
-              label: "حساب کاربری",
-              icon: Icon(Icons.account_circle, size: 25),
-            ),
           ],
         ),
       ),

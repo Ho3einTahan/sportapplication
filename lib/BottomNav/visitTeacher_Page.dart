@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'Chat_Page.dart';
 import 'articles_Page.dart';
-import 'home_Page.dart';
+import 'Primary_page.dart';
 
 class visitTeacher_Page extends StatefulWidget {
   visitTeacher_Page({super.key});
@@ -12,8 +12,7 @@ class visitTeacher_Page extends StatefulWidget {
 }
 
 class _visitTeacher_PageState extends State<visitTeacher_Page> {
-  int index = 1;
-  var listpage = [home_Page(), articles_Page(), Chat_Page()];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -243,53 +242,6 @@ class _visitTeacher_PageState extends State<visitTeacher_Page> {
                   ),
                 ),
               ],
-            ),
-            Positioned(
-                bottom: 24, right: 24, left: 24, child: bottomNavigationbar()),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget bottomNavigationbar() {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8),
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: 60,
-        decoration: BoxDecoration(),
-        child: BottomNavigationBar(
-          selectedItemColor: Color(0xff4FAF30),
-          unselectedItemColor: Color(0xff555555),
-          onTap: (value) {
-            setState(() {
-              index = value;
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) {
-                  return listpage[index];
-                }),
-              );
-            });
-          },
-          currentIndex: index,
-          items: [
-            BottomNavigationBarItem(
-              label: "خانه",
-              icon: Icon(Icons.home, size: 25),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.menu_book, size: 25),
-              label: "مقالات",
-            ),
-            BottomNavigationBarItem(
-              label: "گفتگو ها",
-              icon: Icon(Icons.chat, size: 25),
-            ),
-            BottomNavigationBarItem(
-              label: "حساب کاربری",
-              icon: Icon(Icons.account_circle, size: 25),
             ),
           ],
         ),

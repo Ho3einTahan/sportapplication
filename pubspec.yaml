@@ -27,6 +27,8 @@ dependencies:
   carousel_slider: ^4.2.1
   http: ^0.13.5
   flutter_ruler_picker: ^1.0.3
+  sizer: ^2.0.15
+  flutter_chat_ui: ^1.6.6
 dev_dependencies:
   flutter_test:
     sdk: flutter

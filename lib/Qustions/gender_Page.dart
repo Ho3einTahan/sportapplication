@@ -1,8 +1,8 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:sport_application/Sickness_Page.dart';
-import 'package:sport_application/Target_Page.dart';
+import 'package:sport_application/Qustions/Sickness_Page.dart';
+import 'package:sport_application/Qustions/Target_Page.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class gender_Page extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sport_application/Target_Page.dart';
-import 'package:sport_application/top_level_Appbar.dart';
+import 'package:sport_application/Qustions/Target_Page.dart';
+import 'package:sport_application/setting/top_level_Appbar.dart';
 
 class Sickness_Page extends StatefulWidget {
   Sickness_Page({super.key, this.userData});
