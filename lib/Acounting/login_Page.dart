@@ -1,10 +1,9 @@
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-import 'package:sport_application/core/apis/Login.dart';
-import 'package:sport_application/Qustions/gender_Page.dart';
 import 'package:sport_application/Acounting/sign_Up_Page.dart';
+
+import '../Qustions/gender_Page.dart';
 
 class login_Page extends StatefulWidget {
   login_Page({super.key});
@@ -14,8 +13,8 @@ class login_Page extends StatefulWidget {
 }
 
 class _login_PageState extends State<login_Page> {
-  final TextEditingController textuserName = TextEditingController();
-  final TextEditingController textpassWord = TextEditingController();
+  final TextEditingController textuserName = TextEditingController(text: 'admin');
+  final TextEditingController textpassWord = TextEditingController(text: '1234');
   final TextEditingController textphoneNumber = TextEditingController();
   final TextEditingController textbirthDay = TextEditingController();
   final formKey = GlobalKey<FormState>();
@@ -34,8 +33,7 @@ class _login_PageState extends State<login_Page> {
           children: [
             Stack(
               children: [
-                Positioned(
-                    left: -10, child: Image.asset("images/eclipsleft.png")),
+                Positioned(left: -10, child: Image.asset("images/eclipsleft.png")),
                 Center(
                     child: Container(
                   width: MediaQuery.of(context).size.width - 128,
@@ -66,8 +64,7 @@ class _login_PageState extends State<login_Page> {
                       padding: EdgeInsets.only(top: 2.h, bottom: 3.5.h),
                       child: Text(
                         "ورود",
-                        style: TextStyle(
-                            fontSize: 20.sp, fontWeight: FontWeight.w700),
+                        style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700),
                       ),
                     ),
                   ),
@@ -131,9 +128,7 @@ class _login_PageState extends State<login_Page> {
                                   });
                                 },
                                 icon: Icon(
-                                  isshow == true
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
+                                  isshow == true ? Icons.visibility : Icons.visibility_off,
                                   color: Color(0xff4FAF30),
                                   size: 20,
                                 )),
@@ -236,21 +231,24 @@ class _login_PageState extends State<login_Page> {
             foregroundColor: Colors.white,
           ),
           onPressed: () async {
-            setState(() {
-              is_sended = !is_sended;
-            });
-            new Future.delayed(const Duration(seconds: 3), () async {
-              print('delayed execution');
-            });
-            final login = await Authentication().login(
-                textphoneNumber.text.toString(), textpassWord.text.toString());
-            print(login);
-            setState(() {
-              is_sended = !is_sended;
-            });
-            Get.snackbar('موفقیت آمیز!', 'شما با موفقیت ثبت نام شدید!',
-                backgroundColor: Colors.red, barBlur: 50);
-            Get.snackbar('خطا!', 'نام کاربری شما یا ایمیل شما وجود دارد!');
+            // setState(() {
+            //   is_sended = !is_sended;
+            // });
+            // new Future.delayed(const Duration(seconds: 3), () async {
+            //   print('delayed execution');
+            // });
+            // final login = await Authentication().login(
+            //     textphoneNumber.text.toString(), textpassWord.text.toString());
+            // print(login);
+            // setState(() {
+            //   is_sended = !is_sended;
+            // });
+            if (textuserName.text == 'admin' && textpassWord.text == '1234') {
+              Get.to(gender_Page());
+              Get.snackbar('موفقیت آمیز!', 'شما با موفقیت وارد  شدید!', backgroundColor: Colors.green, barBlur: 50);
+            } else {
+              Get.snackbar('خطا!', 'نام کاربری شما وجود دارد!');
+            }
           },
           child: Row(
             children: <Widget>[
