@@ -1,12 +1,10 @@
 class image {
   final String imagePath;
-
   image(this.imagePath);
 }
 
 class content {
   final String contentPageView;
-
   content(this.contentPageView);
 }
 
