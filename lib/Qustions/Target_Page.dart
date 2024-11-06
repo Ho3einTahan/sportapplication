@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:sport_application/Qustions/BodyLevel_Page.dart';
 import 'package:sport_application/model/data/Target_Data.dart';
 import 'package:sport_application/setting/top_level_Appbar.dart';
-import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class Target_Page extends StatefulWidget {
   Target_Page({super.key, required this.userData});
+
   Map<String, dynamic>? userData;
+
 // صفحه نظر سنجی
   @override
   State<Target_Page> createState() => _Target_PageState();
@@ -17,6 +18,7 @@ class _Target_PageState extends State<Target_Page> {
   Color bordercolor = Color(0xffF2F2F2);
   List<bool> isvisibtly = [false, false, false, false];
   List<bool> borderColor = [false, false, false, false];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -58,10 +60,7 @@ class _Target_PageState extends State<Target_Page> {
                                     isvisibtly[3] = false;
 
                                     ///
-                                    widget.userData!["target"] =
-                                        getTarget_Data()
-                                            .target[index]
-                                            .textTarget;
+                                    widget.userData!["target"] = getTarget_Data().target[index].textTarget;
                                     ////
                                     ///
                                     borderColor[0] = true;
@@ -79,10 +78,7 @@ class _Target_PageState extends State<Target_Page> {
                                     isvisibtly[3] = false;
 
                                     ///
-                                    widget.userData!["target"] =
-                                        getTarget_Data()
-                                            .target[index]
-                                            .textTarget;
+                                    widget.userData!["target"] = getTarget_Data().target[index].textTarget;
 
                                     ////
                                     ///
@@ -101,10 +97,7 @@ class _Target_PageState extends State<Target_Page> {
                                     isvisibtly[3] = false;
 
                                     ///
-                                    widget.userData!["target"] =
-                                        getTarget_Data()
-                                            .target[index]
-                                            .textTarget;
+                                    widget.userData!["target"] = getTarget_Data().target[index].textTarget;
 
                                     ///
                                     //////
@@ -123,10 +116,7 @@ class _Target_PageState extends State<Target_Page> {
                                     isvisibtly[3] = true;
 
                                     ///
-                                    widget.userData!["target"] =
-                                        getTarget_Data()
-                                            .target[index]
-                                            .textTarget;
+                                    widget.userData!["target"] = getTarget_Data().target[index].textTarget;
 
                                     ///
                                     ////
@@ -143,9 +133,7 @@ class _Target_PageState extends State<Target_Page> {
                                 decoration: BoxDecoration(
                                   border: Border.all(
                                     width: 1.5,
-                                    color: borderColor[index] == true
-                                        ? Color(0xff4FAF30)
-                                        : Color(0xffF2F2F2),
+                                    color: borderColor[index] == true ? Color(0xff4FAF30) : Color(0xffF2F2F2),
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                   color: Color(0xffF2F2F2),
@@ -166,10 +154,7 @@ class _Target_PageState extends State<Target_Page> {
                             ),
                             FractionalTranslation(
                               translation: Offset(0.5, -0.5),
-                              child: Visibility(
-                                  visible: isvisibtly[index],
-                                  child: Image.asset("images/tick1.png",
-                                      width: 22, height: 22)),
+                              child: Visibility(visible: isvisibtly[index], child: Image.asset("images/tick1.png", width: 22, height: 22)),
                             ),
                           ],
                         ),
@@ -182,7 +167,7 @@ class _Target_PageState extends State<Target_Page> {
               SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    SizedBox(height: 100),
+                    SizedBox(height: 80),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 24),
                       child: ClipRRect(
