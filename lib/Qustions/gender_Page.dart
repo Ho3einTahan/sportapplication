@@ -4,8 +4,6 @@ import 'package:sport_application/Qustions/Sickness_Page.dart';
 
 class gender_Page extends StatefulWidget {
   gender_Page({super.key});
-
-// صفحه انتخاب جنسیت
   @override
   State<gender_Page> createState() => _gender_PageState();
 }
